@@ -14,5 +14,16 @@
     {{ end }}
     <link href="{{ .Site.BaseURL }}css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="{{ .Site.BaseURL }}css/custom.css" rel="stylesheet">
+{{ if .Site.Params.Favicon }}
+<link rel="icon" type="image/x-icon" href="{{ .Site.BaseURL }}{{ .Site.Params.Favicon }}" />
+{{ end }}
+
+<style>
+/* Move down content because we have a fixed navbar that is 50px tall */
+
+body {
+  padding-top: 60px;
+}
+</style>
 
 </head>
