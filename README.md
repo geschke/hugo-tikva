@@ -8,6 +8,8 @@ It's also possible to edit some color options by config option.
 
 ## Demo
 
+### todo...
+
 You can find a demo [here](https://themes.gohugo.io/theme/hugo-tikva/).
 
 ## Screenshots

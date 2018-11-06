@@ -23,13 +23,15 @@
           {{ end }}
         </div>
       </li>
+      <span class="mx-2"></span>
       {{ else }}
-      <li>
+      <li class="nav-item">
         <a class="nav-link" href="{{ .URL }}">
           {{ .Pre }}
-          <span>{{ .Name }}</span>
+          {{ .Name }}
         </a>
       </li>
+      <span class="mx-2"></span>
       {{ end }}
       {{ end }}
 

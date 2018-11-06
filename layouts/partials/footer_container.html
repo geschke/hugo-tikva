@@ -4,10 +4,12 @@
 
 
             <div class="row">
-             {{ partial "footer_column.html" . }}
-             {{ partial "footer_column.html" . }}
-             {{ partial "footer_column.html" . }}
-               
+
+                {{ range first .Site.Params.Theme.Footer.NumberColumns (where .Site.Pages "Section" "footer") }}
+
+                {{ partial "footer_column.html" . }}
+                {{ end }}
+
             </div>
         </footer>
     </div>

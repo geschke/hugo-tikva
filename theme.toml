@@ -19,3 +19,5 @@ min_version = "0.41"
   name = "Tikva theme for Grav CMS"
   homepage = "https://www.kuerbis.org/tikva-theme-for-grav-cms/"
   repo = "https://github.com/geschke/grav-theme-tikva"
+
+# cookie consent stuff, maybe use https://cookieconsent.insites.com/download/

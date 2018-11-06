@@ -1,15 +1,15 @@
-{{ .Site.Params.Tikva.Subfooter.Content }}
-{{ .Site.Params.Meta.Description }}
-{{ .Site.Params.BootstrapTheme }}
-
-{{ if .Site.Params.Tikva.Subfooter.Enabled }}
+{{ if .Site.Params.Theme.Subfooter.Enabled }}
 <div class="subfooter-container" style="">
 
     <div class="container">
         <div class="footer">
             <div class="row wrapper padding">
                 <div class="col-xs-12 col-md-12">
-                    {{ .Site.Params.Tikva.Subfooter.Content }}
+                    {{ range first 1 (where .Site.Pages "Section" "subfooter") }}
+
+                    {{ .Content }}
+                    {{ end }}
+
                 </div>
             </div>
         </div>
