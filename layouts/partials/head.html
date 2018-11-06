@@ -20,10 +20,15 @@
 
 <style>
 /* Move down content because we have a fixed navbar that is 50px tall */
-
+{{ if .Site.Params.Navbar.fixedTop }}
+    {{ $paddingTop := 60 }}
+    {{ if .Site.Params.Navbar.AdjustHeader }}
+        {{ $paddingTop  = add 60 .Site.Params.Navbar.AdjustHeader }}
+    {{ end }}
 body {
-  padding-top: 60px;
+  padding-top: {{ $paddingTop }}px;
 }
+{{ end }}
 </style>
 
 </head>
