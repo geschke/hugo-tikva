@@ -1,0 +1,18 @@
+<head>
+    <meta charset="utf-8" />
+    <title>{{ .Page.Title }}{{ if .Site.Params.AppendSiteTitle }} | {{ .Site.Title }}{{ end }}</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {{ range $metaName, $metaValue := .Site.Params.Meta }}
+    <meta name="{{ $metaName }}" content="{{ htmlUnescape $metaValue }}">{{ end }}
+
+    {{ if .Site.Params.Theme.BootstrapTheme }}
+    <link href="{{ .Site.BaseURL }}css/bootswatch/{{ .Site.Params.Theme.BootstrapTheme }}.min.css" rel="stylesheet">
+    {{ else }}
+    <link href="{{ .Site.BaseURL }}css/bootstrap.min.css" rel="stylesheet">
+    {{ end }}
+    <link href="{{ .Site.BaseURL }}css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="{{ .Site.BaseURL }}css/custom.css" rel="stylesheet">
+
+</head>

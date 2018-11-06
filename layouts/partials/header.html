@@ -1,0 +1,37 @@
+<nav class="navbar fixed-top navbar-expand-lg {{ .Site.Params.Navbar.ColorScheme }} {{ .Site.Params.Navbar.BgScheme }}">
+  <a class="navbar-brand" href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMain" aria-controls="navbarMain"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarMain">
+    <ul class="navbar-nav mr-auto">
+      {{ $currentPage := . }}
+      {{ range .Site.Menus.main }}
+      {{ if .HasChildren }}
+      <li class="nav-item dropdown {{ if $currentPage.HasMenuCurrent "main" . }}active{{ end }}">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">
+          {{ .Pre }}
+          {{ .Name }}
+        </a>
+        <div class="sub-menu dropdown-menu" aria-labelledby="navbarDropdown">
+          {{ range .Children }}
+
+          <a class="dropdown-item" href="{{ .URL }}">{{ .Name }}</a>
+          {{ end }}
+        </div>
+      </li>
+      {{ else }}
+      <li>
+        <a class="nav-link" href="{{ .URL }}">
+          {{ .Pre }}
+          <span>{{ .Name }}</span>
+        </a>
+      </li>
+      {{ end }}
+      {{ end }}
+
+    </ul>
+</nav>

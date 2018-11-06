@@ -1,0 +1,18 @@
+{{ .Site.Params.Tikva.Subfooter.Content }}
+{{ .Site.Params.Meta.Description }}
+{{ .Site.Params.BootstrapTheme }}
+
+{{ if .Site.Params.Tikva.Subfooter.Enabled }}
+<div class="subfooter-container" style="">
+
+    <div class="container">
+        <div class="footer">
+            <div class="row wrapper padding">
+                <div class="col-xs-12 col-md-12">
+                    {{ .Site.Params.Tikva.Subfooter.Content }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{ end }}
