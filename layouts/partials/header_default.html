@@ -1,0 +1,143 @@
+
+{{/*
+$content['headerOptions']['header_color_bg'] = get_theme_mod('azbalac_setting_header_color_bg','#000000'); // default black
+$content['headerOptions']['header_background_transp'] = get_option('azbalac_setting_header_background_transp',70); // default 70%
+$content['headerOptions']['header_background_transp_hex'] = dechex(round(255 / 100 * $content['headerOptions']['header_background_transp']));
+$content['headerOptions']['header_alignment'] = get_option('azbalac_setting_header_alignment',1);
+switch (intval($content['headerOptions']['header_alignment'])) {
+    case 2: // top, center
+        $headerContainerClass = ' fixed-top ';
+        $headerBoxClassTitle = ' d-flex justify-content-center ';
+        $headerBoxClassSubtitle = ' d-flex justify-content-center ';
+    
+    break;
+    case 3: // top, right
+        $headerContainerClass = ' fixed-top ';
+        $headerBoxClassTitle = ' d-flex justify-content-end ';
+        $headerBoxClassSubtitle = ' d-flex justify-content-end ';
+    break;
+    case 4: // bottom, left
+        $headerContainerClass = ' fixed-bottom ';
+        $headerBoxClassTitle = ' d-flex justify-content-start ';
+        $headerBoxClassSubtitle = ' d-flex justify-content-start ';
+    break;
+    case 5: // bottom, center
+        $headerContainerClass = ' fixed-bottom ';
+        $headerBoxClassTitle = ' d-flex justify-content-center ';
+        $headerBoxClassSubtitle = ' d-flex justify-content-center';
+    break;
+    case 6: // bottom, right
+        $headerContainerClass = ' fixed-bottom ';
+        $headerBoxClassTitle = ' d-flex justify-content-end ';
+        $headerBoxClassSubtitle = ' d-flex justify-content-end ';
+    break;
+    case 1: // top, left (default)
+    default:
+        $headerContainerClass = ' fixed-top ';
+        $headerBoxClassTitle = ' d-flex justify-content-start ';
+        $headerBoxClassSubtitle = ' d-flex justify-content-start ';
+    break;
+}
+
+$content['headerOptions']['header_container'] = ['container_class' => $headerContainerClass,
+'box_class_title' => $headerBoxClassTitle,
+'box_class_subtitle' => $headerBoxClassSubtitle];
+
+
+*/}}
+
+  {{ $overlayBackgroundColor := "#000000" }}
+{{ if .Site.Params.Theme.Header.OverlayBackgroundColor }}
+    {{ $overlayBackgroundColor = .Site.Params.Theme.Header.OverlayBackgroundColor }}
+{{ end }}
+{{ $overlayTransparency := 70 }} {{/* default transparency 70% */}} 
+{{ if .Site.Params.Theme.Header.OverlayTransparency }}
+    {{ $overlayTransparency = int .Site.Params.Theme.Header.OverlayTransparency }}
+{{ end }}
+
+{{ $overlayBackgroundTranspHex := math.Round (mul (div 255.0 100.0) $overlayTransparency) }}
+
+{{ $foo := "#4488ff" }}
+{{ $foo = trim $foo "#" }}
+{{ $foo }}
+<p>
+{{ $rr := substr $foo 0 2 }}
+{{ $gg := substr $foo 2 2 }}
+{{ $bb := substr $foo 4 2 }}
+{{ int (printf "0x%s" $rr) }} || {{ int (printf "0x%s" $gg) }} || {{ int (printf "0x%s" $bb) }}
+<p>
+{{ printf "0x%s" "ff" }} 
+<p>
+{{ int (printf "0x%s" "ff") }}
+<p>
+{{ $overlayBackgroundTranspHex }}
+
+
+
+<div id="header" role="banner" style="{{ if .Site.Params.Theme.Header.BackgroundColor }}background-color: 
+{{ .Site.Params.Theme.Header.BackgroundColor }};{{ end }}
+{{ if .Site.Params.Theme.Header.FontColor }}color: {{  .Site.Params.Theme.Header.FontColor }};{{ end }}">
+
+    <div class="container">
+        <header class="masthead">
+            <div>
+                <div id="site-header-container-above" class="row align-items-center">
+                    {{ if not .Site.Params.Theme.Header.TitleOnImage }}
+                        <div class="col">
+                            {{ if .Site.Params.Theme.Header.DisplayHeaderText }}
+                                <h1 id="site-header-text"><a class="header-url" style="{{ if .Site.Params.Theme.Header.FontColorTitle }}color: {{ .Site.Params.Theme.Header.FontColorTitle }};{{ end }}" href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></h1>
+                                {{ if .Site.Params.Subtitle }}<h2 class="azbalac-subtitle-above" id="site-description" style="{{ if .Site.Params.Theme.Header.FontColorSubtitle }}color: {{ .Site.Params.Theme.Header.FontColorSubtitle }};{{ end }}">{{ .Site.Params.Subtitle }}</h2>{{ end }}
+                            {{ else }}
+                                &nbsp;
+                            {{ end }} 
+                        </div>
+                        
+                    {{ end }}
+                </div>
+            </div>
+
+
+            
+
+            <div id="site-header-above">
+                <a href="{{ .Site.BaseURL }}" rel="home"><img id="site-header-image" src="{{ .Site.BaseURL }}{{ .Site.Params.Theme.Header.Image }}" width="1" height="1" data-width="{{ .Site.Params.Theme.Header.Width }}" data-height="{{ .Site.Params.Theme.Header.Height }}" alt="{{ .Site.Params.Theme.Header.AltText }}">
+                </a>
+
+                {{ if and .Site.Params.Theme.Header.TitleOnImage .Site.Params.Theme.Header.DisplayHeaderText }}
+
+                <div id="site-header-container-overlay" class="position-absolute {{ .Site.Params.Theme.Header.header_container.container_class }}">
+                    <div id="site-header-box-title" class="{{ .Site.Params.Theme.Header.header_container.box_class_title }}">
+                        <h1 class="azbalac-title" id="site-header-text"><a class="header-url" style="{{ if .Site.Params.Theme.Header.FontColorTitle }}color: {{ .Site.Params.Theme.Header.FontColorTitle }};{{ end }}" href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></h1>
+                    </div>
+                    {{ if .Site.Params.Subtitle }}
+                    <div id="site-header-box-subtitle" class="{{ .Site.Params.Theme.Header.header_container.box_class_subtitle }}">   
+                        <h2 class="azbalac-subtitle" id="site-description" style="{{ if .Site.Params.Theme.Header.headerStyles.colorFgSubtitle }}color: {{ .Site.Params.Theme.Header.headerStyles.colorFgSubtitle }};{{ end }}">{{ .Site.Params.Subtitle }}</h2>
+                    </div>{{ end }}
+                </div>
+                {{ end }}
+             
+            </div>
+
+
+    <nav id="navbarMain" class="navbar navbar-expand-sm justify-content-between mb-3 {{ .Site.Params.Navbar.ColorScheme }} {{ .Site.Params.Navbar.BgScheme }}" {{ if .Site.Params.Navbar.BackgroundColor }}style="background-color: {{ .Site.Params.Navbar.BackgroundColor }};" {{ end }}role="navigation">
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+        </button>
+      
+            
+            <div class="sticky-top navbar-collapse collapse  {{ .Site.Params.Navbar.TextAlignment }}" id="navbarSupportedContent"> 
+                <ul class="navbar-nav">
+                 {{- partial "navbar_items.html" . -}}
+               </ul>
+             
+            </div><!--/.nav-collapse -->
+        
+            
+    </nav> <!-- end navbar-->
+
+
+
+      </header>
+    </div> <!-- /container -->
+</div><!-- /div id header with default navbar -->

@@ -3,13 +3,20 @@
 {{- partial "head.html" . -}}
 
 <body>
-    {{- partial "header.html" . -}}
-    <div class="container">
-        <div class="row">
-            <div class="col-md" id="content">
-                {{- block "main" . }}{{- end }}
-            </div>
+    {{ if .Site.Params.Navbar.FixedTop }}
+        {{- partial "header_fixed_top.html" . -}}
+    {{ else }}
+        {{- partial "header_default.html" . -}}
+    {{ end }}
 
+    <div id="main">
+        <div class="container">
+            <div class="row">
+                <div class="col-md" id="content">
+                    {{- block "main" . }}{{- end }}
+                </div>
+
+            </div>
         </div>
     </div>
 
@@ -17,6 +24,8 @@
     {{ partial "footer_container.html" . }}
     {{ partial "subfooter_container.html" . }}
     {{ end }}
+
+    <div id="media-width-detection-element"></div>
 </body>
 
 {{- partial "bottom.html" . -}}

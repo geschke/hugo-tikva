@@ -18,17 +18,107 @@
 <link rel="icon" type="image/x-icon" href="{{ .Site.BaseURL }}{{ .Site.Params.Favicon }}" />
 {{ end }}
 
-<style>
-/* Move down content because we have a fixed navbar that is 50px tall */
-{{ if .Site.Params.Navbar.fixedTop }}
-    {{ $paddingTop := 60 }}
-    {{ if .Site.Params.Navbar.AdjustHeader }}
-        {{ $paddingTop  = add 60 .Site.Params.Navbar.AdjustHeader }}
-    {{ end }}
-body {
-  padding-top: {{ $paddingTop }}px;
-}
-{{ end }}
-</style>
 
+<script type="text/javascript">
+    var azbalacHeaderImage = [{"url":"{{ .Site.BaseURL }}{{ .Site.Params.Theme.Header.Image }}",
+    "height": '{{ .Site.Params.Theme.Header.Height }}',
+    "width": '{{ .Site.Params.Theme.Header.Width }}'},"","",""];
+</script>
+<script src="{{ .Site.BaseURL }}js/jquery-3.3.1.min.js"></script>
+<script src="{{ .Site.BaseURL }}js/functions.js"></script>
+
+<style>
+body {
+    {{ if .Site.Params.Navbar.fixedTop }}
+    /* Move down content because we have a fixed navbar that is 60px tall */
+
+        {{ $paddingTop := 60 }}
+        {{ if .Site.Params.Navbar.AdjustHeader }}
+            {{ $paddingTop  = add 60 .Site.Params.Navbar.AdjustHeader }}
+        {{ end }}
+        padding-top: {{ $paddingTop }}px;
+    {{ end }}
+
+    {{ if .Site.Params.Theme.BackgroundColor }}
+        background-color: {{ .Site.Params.Theme.BackgroundColor }};
+    {{ end }}
+
+    {{ $backgroundImage := .Site.Params.Theme.BackgroundImage }}
+    {{ if $backgroundImage }}
+        background-image: url("{{ .Site.BaseURL }}{{ $backgroundImage }}");
+        {{ $backgroundRepeat := "repeat" }}
+        {{ if .Site.Params.Theme.BackgroundImageRepeat }}
+            {{ $backgroundRepeat =  .Site.Params.Theme.BackgroundImageRepeat }}
+        {{ end }}
+        background-repeat: {{ $backgroundRepeat }};
+    {{ end }}
+
+
+}
+{{ if .Site.Params.Theme.Footer.BackgroundColor }}
+.footer-container { background-color: {{ .Site.Params.Theme.Footer.BackgroundColor }}; }
+{{ end }}
+{{ if .Site.Params.Theme.Footer.FontColor }}
+.footer-container { color: {{ .Site.Params.Theme.Footer.FontColor }}; }
+{{ end }}
+{{ if .Site.Params.Theme.Footer.LinkColor }}
+.footer-container a { color: {{ .Site.Params.Theme.Footer.LinkColor }}; }
+{{ end }}
+{{ if .Site.Params.Theme.Subfooter.BackgroundColor }}
+.subfooter-container { background-color: {{ .Site.Params.Theme.Subfooter.BackgroundColor }}; }
+{{ end }}
+{{ if .Site.Params.Theme.Subfooter.FontColor }}
+.subfooter-container { color: {{ .Site.Params.Theme.Subfooter.FontColor }}; }
+{{ end }}
+{{ if .Site.Params.Theme.Sobfooter.LinkColor }}
+.subfooter-container a { color: {{ .Site.Params.Theme.Subfooter.LinkColor }}; }
+{{ end }}
+
+
+
+
+</style>
+{{ if not .Site.Params.Navbar.FixedTop }}
+    {{ if and .Site.Params.Theme.Header.header_background_transp .Site.Params.Theme.Header.header_color_bg }}
+    <script type="text/javascript">
+        var azbalacSettingHeaderColor = { 'bg': '{{ .Site.Params.Theme.Header.header_color_bg }}',
+            'transp': '{{ .Site.Params.Theme.Header.header_background_transp }}'
+            };
+
+    </script>
+    <style type="text/css">
+        #site-header-text a, #site-description {
+    
+            background: {{ .Site.Params.Theme.Header.header_color_bg}}; /* fallback color */
+            background: {{ .Site.Params.Theme.Header.header_color_bg }}{{ .Site.Params.Theme.Header.header_background_transp_hex }};
+            
+        }
+    </style>
+    {{ end }}
+    {{ if .Site.Params.Theme.Header.OverlayDistanceBetween }}
+    <style type="text/css">
+        #site-header-box-title {
+            margin-bottom: '{{ .Site.Params.Theme.Header.OverlayDistanceBetween }}px';
+        }
+    </style>
+    {{ end }}
+    {{ if or .Site.Params.Theme.Header.OverlayDistanceVertical .Site.Params.Theme.Header.OverlayDistanceHorizontal }}
+    <style type="text/css">
+        #site-header-container-overlay {
+        {{ if (eq .Site.Params.Theme.Header.OverlayAlignment "lt") or (eq .Site.Params.Theme.Header.OverlayAlignment "lb") }}
+            left: {{ .Site.Params.Theme.Header.OverlayDistanceHorizontal }}px;
+        {{ else if (eq .Site.Params.Theme.Header.OverlayAlignment "mt") or ( eq .Site.Params.Theme.Header.OverlayAlignment "mb") }}
+            
+        {{ else if (eq .Site.Params.Theme.Header.OverlayAlignment "rt") or ( eq .Site.Params.Theme.Header.OverlayAlignment "rb") }}
+            right: {{ .Site.Params.Theme.Header.OverlayDistanceHorizontal }}px;
+        {{ end }}
+        {{ if (eq .Site.Params.Theme.Header.OverlayAlignment "lt") or (eq .Site.Params.Theme.Header.OverlayAlignment "mt") or (eq .Site.Params.Theme.Header.OverlayAlignment "rt") }}
+            top: {{ .Site.Params.Theme.Header.OverlayDistanceVertical }}px;
+        {{ else if ( eq .Site.Params.Theme.Header.OverlayAlignment "lb") or ( eq .Site.Params.Theme.Header.OverlayAlignment "mb") or ( eq .Site.Params.Theme.Header.OverlayAlignment "rb") }}
+            bottom: {{ .Site.Params.Theme.Header.OverlayDistanceVertical }}px;
+        {{ end }}
+        }
+    </style>
+    {{ end }}
+{{ end }}
 </head>

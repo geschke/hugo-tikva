@@ -1,3 +1,11 @@
+.footer-container > .container {
+  padding-top: 20px; 
+}
+
+
+.subfooter-container > .container {
+  padding-top: 20px; 
+}
 
 /* Menu Settings - later... */
 .main-nav ul {
