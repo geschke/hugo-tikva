@@ -112,50 +112,143 @@ body {
 {{/* Header Title Font Settings */}}
     {{- $headerTitleVariant := "" -}}
     {{- if .Site.Params.Fonts.headerTitleVariant -}}
-        {{- $headerTitleVariant = (printf ":%s" .Site.Params.Fonts.headerTitleVariant) -}}
+        {{- $headerTitleVariant = (printf ":%s" .Site.Params.Fonts.HeaderTitleVariant) -}}
     {{- end -}}
     {{- if .Site.Params.Fonts.headerTitleGoogleFont -}}
         {{- safeHTML (printf "<link id=\"typography-header-title-font\" rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css?%s\">" (querify "family" (printf "%s%s" (trim .Site.Params.Fonts.HeaderTitle "\"") $headerTitleVariant ))    ) -}}
     {{- end -}}
 <style id="typography-title" type="text/css">
-    {{- if .Site.Params.Fonts.headerTitle -}}
+    {{- if .Site.Params.Fonts.HeaderTitle -}}
     #site-header-text a {
         font-family: {{ safeCSS .Site.Params.Fonts.HeaderTitle }};
     }
     {{- end -}}
-    {{- if .Site.Params.Fonts.headerTitleSize -}}
+    {{- if .Site.Params.Fonts.HeaderTitleSize -}}
     #site-header-text a {
-        font-size: {{ .Site.Params.Fonts.headerTitleSize }}; 
+        font-size: {{ .Site.Params.Fonts.HeaderTitleSize }}; 
     }
 
     {{- end -}}
 </style>
 
-
 {{/* Header Subtitle Font Settings */}}
     {{- $headerSubtitleVariant := "" -}}
-    {{- if .Site.Params.Fonts.headerSubtitleVariant -}}
-        {{- $headerSubtitleVariant = (printf ":%s" .Site.Params.Fonts.headerSubtitleVariant) -}}
+    {{- if .Site.Params.Fonts.HeaderSubtitleVariant -}}
+        {{- $headerSubtitleVariant = (printf ":%s" .Site.Params.Fonts.HeaderSubtitleVariant) -}}
     {{- end -}}
     {{- if .Site.Params.Fonts.headerSubtitleGoogleFont -}}
         {{- safeHTML (printf "<link id=\"typography-header-subtitle-font\" rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css?%s\">" (querify "family" (printf "%s%s" (trim .Site.Params.Fonts.HeaderSubtitle "\"") $headerSubtitleVariant ))    ) -}}
     {{- end -}}
 <style id="typography-subtitle" type="text/css">
-    {{- if .Site.Params.Fonts.headerSubtitle -}}
+    {{- if .Site.Params.Fonts.HeaderSubtitle -}}
     #site-description {
         font-family: {{ safeCSS .Site.Params.Fonts.HeaderSubtitle }};
     }
     {{- end -}}
-    {{- if .Site.Params.Fonts.headerSubtitleSize -}}
+    {{- if .Site.Params.Fonts.HeaderSubtitleSize -}}
     #site-description {
-        font-size: {{ .Site.Params.Fonts.headerSubtitleSize }}; 
+        font-size: {{ .Site.Params.Fonts.HeaderSubtitleSize }}; 
     }
 
     {{- end -}}
 </style>
 
+{{/* Body Font Settings */}}
+    {{- $bodyVariant := "" -}}
+    {{- if .Site.Params.Fonts.BodyVariant -}}
+        {{- $bodyVariant = (printf ":%s" .Site.Params.Fonts.BodyVariant) -}}
+    {{- end -}}
+    {{- if .Site.Params.Fonts.bodyGoogleFont -}}
+        {{- safeHTML (printf "<link id=\"typography-body-font\" rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css?%s\">" (querify "family" (printf "%s%s" (trim .Site.Params.Fonts.Body "\"") $bodyVariant ))    ) -}}
+    {{- end -}}
+<style id="typography-body" type="text/css">
+    {{- if .Site.Params.Fonts.Body -}}
+    body {
+        font-family: {{ safeCSS .Site.Params.Fonts.Body }};
+    }
+    {{- end -}}
+    {{- if .Site.Params.Fonts.BodySize -}}
+    body {
+        font-size: {{ .Site.Params.Fonts.BodySize }}; 
+    }
+    {{- end -}}
+</style>
 
+{{/* Navbar Font Settings */}}
+    {{- $navbarVariant := "" -}}
+    {{- if .Site.Params.Fonts.NavbarVariant -}}
+        {{- $navbarVariant = (printf ":%s" .Site.Params.Fonts.NavbarVariant) -}}
+    {{- end -}}
+    {{- if .Site.Params.Fonts.NavbarGoogleFont -}}
+        {{- safeHTML (printf "<link id=\"typography-navbar-font\" rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css?%s\">" (querify "family" (printf "%s%s" (trim .Site.Params.Fonts.Navbar "\"") $navbarVariant ))    ) -}}
+    {{- end -}}
+<style id="typography-navbar" type="text/css">
+    {{- if .Site.Params.Fonts.Navbar -}}
+    nav#navbarMain {
+        font-family: {{ safeCSS .Site.Params.Fonts.Navbar }};
+    }
+    {{- end -}}
+    {{- if .Site.Params.Fonts.NavbarSize -}}
+    nav#navbarMain {
+        font-size: {{ .Site.Params.Fonts.NavbarSize }}; 
+    }
+    nav#navbarMain ul.dropdown-menu {
+        font-size: {{ .Site.Params.Fonts.NavbarSize }};
+    }
+    {{- end -}}
+</style>
 
+{{/* Headline Font Settings */}}
+    {{- $headlineVariant := "" -}}
+    {{- if .Site.Params.Fonts.headlineVariant -}}
+        {{- $headlineVariant = (printf ":%s" .Site.Params.Fonts.headlineVariant) -}}
+    {{- end -}}
+    {{- if and .Site.Params.Fonts.headlineGoogleFont .Site.Params.Fonts.Headline -}}
+        {{- safeHTML (printf "<link id=\"typography-headline-font\" rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css?%s\">" (querify "family" (printf "%s%s" (trim .Site.Params.Fonts.headline "\"") $headlineVariant ))    ) -}}
+    {{- end -}}
+<style id="typography-headline" type="text/css">
+    {{- if .Site.Params.Fonts.Headline -}}
+    h1, h2, h3, h4, h5, h6 {
+                font-family: {{ safeCSS .Site.Params.Fonts.headline }}; 
+            }
+    {{- end -}}
+    {{- if .Site.Params.Fonts.HeadlineBaseSize -}}
+        {{/* size calculations from Bootstrap framework */}}
+        {{- $sizeBase := int .Site.Params.Fonts.headlineBaseSize }}
+        {{- $sizeH1 := printf "%d%s" (int (math.Floor (mul $sizeBase 2.6))) "px" -}}
+        {{- $sizeH2 := printf "%d%s" (int (math.Floor (mul $sizeBase 2.15))) "px" -}}
+        {{- $sizeH3 := printf "%d%s" (int (math.Ceil (mul $sizeBase 1.7))) "px" -}}
+        {{- $sizeH4 := printf "%d%s" (int (math.Ceil (mul $sizeBase 1.28))) "px" -}}
+        {{- $sizeH5 := printf "%d%s" (int $sizeBase) "px" -}}
+        {{- $sizeH6 := printf "%d%s" (int (math.Ceil (mul $sizeBase 0.85))) "px" -}}
+        {{- $sizeSubtitle := printf "%d%s" (int (math.Floor (mul $sizeBase 1.5))) "px" -}}
+        {{- $sizeJumbotronHeading := printf "%d%s" (int (math.Ceil (mul $sizeBase 4.5))) "px" -}}
+        h1 {
+            font-size: {{ safeCSS $sizeH1 }};
+            }
+        h2 {
+            font-size: {{ safeCSS $sizeH2 }};
+        }
+        h3 {
+        font-size: {{ safeCSS $sizeH3 }};
+        }
+        h4 {
+            font-size: {{ safeCSS $sizeH4 }};
+        }
+        h5 {
+            font-size: {{ safeCSS $sizeH5 }};
+        }
+        h6 {
+            font-size: {{ safeCSS $sizeH6 }};
+        }
+        #site-description {
+            font-size: {{ safeCSS $sizeSubtitle }};
+        }
+        .jumbotron h1 {
+            font-size: {{ safeCSS $sizeJumbotronHeading }};
+        }
+    {{- end -}}
+</style>
 
 
 {{ if not .Site.Params.Navbar.FixedTop }}
