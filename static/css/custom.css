@@ -7,6 +7,95 @@
   padding-top: 20px; 
 }
 
+
+/* media query stuff, new widths come from Bootstrap grid widths */
+
+#media-width-detection-element {
+  display: block;
+  /*border: 1px solid white;*/
+  height: 1px;
+  width: 100%;
+
+}
+
+
+@media (max-width: 575.98px) {
+  #media-width-detection-element {
+      width: 1px;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+  #media-width-detection-element {
+      width: 540px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  #media-width-detection-element {
+      width: 720px;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  #media-width-detection-element {
+      width: 960px;
+  }
+}
+@media (min-width: 1200px) {
+  #media-width-detection-element {
+      width: 1140px;
+  }
+}
+
+
+/* Header */
+
+#site-header-image {
+  box-shadow: #000 0em 0em 0em; /* fix for fadeIn bug in firefox */
+}
+
+
+
+/* default: hidden, will be shown by JavaScript */
+#site-header-above {
+  display: none;
+  position: relative;
+}
+
+#site-header-above img {
+  position: relative;
+}
+
+
+/**********************************/
+
+
+/* default: hidden, will be shown by JavaScript */
+/*#site-header1 {
+  display: block;
+  position: relative;
+}
+
+#site-header1 img {
+  position: relative;
+}*/
+
+#site-header-container-overlay {
+/*    position: absolute;
+  top: 20px;
+  left: 100px;*/
+  z-index: 1000;
+}
+
+/*
+#site-header-text a, #site-description {
+ 
+  background: rgb(0, 0, 0); 
+  background: rgba(0, 0, 0, 0.7);
+  padding: 10px;
+}*/
+
+
 /* Menu Settings - later... */
 .main-nav ul {
   text-align: center;

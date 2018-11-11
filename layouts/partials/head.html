@@ -27,78 +27,157 @@
 <script src="{{ .Site.BaseURL }}js/jquery-3.3.1.min.js"></script>
 <script src="{{ .Site.BaseURL }}js/functions.js"></script>
 
+
+{{- $overlayBackgroundColorFallback := "#000000" -}}
+{{- $overlayBackgroundColor := trim $overlayBackgroundColorFallback "#" -}}
+
+{{- if .Site.Params.Theme.Header.OverlayBackgroundColor -}}
+    {{- $overlayBackgroundColor = trim .Site.Params.Theme.Header.OverlayBackgroundColor "#" -}}
+    {{- $overlayBackgroundColorFallback = .Site.Params.Theme.Header.OverlayBackgroundColor -}}
+{{ end }}
+{{- $overlayTransparency := 70 -}} {{- /* default transparency 70% */ -}} 
+{{- if .Site.Params.Theme.Header.OverlayTransparency -}}
+    {{- $overlayTransparency = int .Site.Params.Theme.Header.OverlayTransparency -}}
+{{- end -}}
+
+{{- $overlayBackgroundTranspHex := printf "%1.2f" (div $overlayTransparency 100.0) -}}
+
+{{- $rr := int (printf "0x%s" (substr $overlayBackgroundColor 0 2)) -}}
+{{- $gg := int (printf "0x%s" (substr $overlayBackgroundColor 2 2)) -}}
+{{- $bb := int (printf "0x%s" (substr $overlayBackgroundColor 4 2)) -}}
+{{- $overlayBackgroundColor := printf " rgba(%d,%d,%d,%s)" $rr $gg $bb $overlayBackgroundTranspHex -}}
+
 <style>
 body {
-    {{ if .Site.Params.Navbar.fixedTop }}
+
+    {{- if .Site.Params.Navbar.fixedTop -}}
     /* Move down content because we have a fixed navbar that is 60px tall */
 
-        {{ $paddingTop := 60 }}
-        {{ if .Site.Params.Navbar.AdjustHeader }}
-            {{ $paddingTop  = add 60 .Site.Params.Navbar.AdjustHeader }}
-        {{ end }}
+        {{- $paddingTop := 60 -}}
+        {{- if .Site.Params.Navbar.AdjustHeader -}}
+            {{- $paddingTop  = add 60 .Site.Params.Navbar.AdjustHeader -}}
+        {{- end -}}
         padding-top: {{ $paddingTop }}px;
-    {{ end }}
+    {{- end -}}
 
-    {{ if .Site.Params.Theme.BackgroundColor }}
+    {{- if .Site.Params.Theme.BackgroundColor -}}
         background-color: {{ .Site.Params.Theme.BackgroundColor }};
-    {{ end }}
+    {{- end -}}
 
-    {{ $backgroundImage := .Site.Params.Theme.BackgroundImage }}
-    {{ if $backgroundImage }}
+    {{- $backgroundImage := .Site.Params.Theme.BackgroundImage -}}
+    {{- if $backgroundImage -}}
         background-image: url("{{ .Site.BaseURL }}{{ $backgroundImage }}");
-        {{ $backgroundRepeat := "repeat" }}
-        {{ if .Site.Params.Theme.BackgroundImageRepeat }}
-            {{ $backgroundRepeat =  .Site.Params.Theme.BackgroundImageRepeat }}
-        {{ end }}
+        {{- $backgroundRepeat := "repeat" -}}
+        {{- if .Site.Params.Theme.BackgroundImageRepeat -}}
+            {{- $backgroundRepeat =  .Site.Params.Theme.BackgroundImageRepeat -}}
+        {{- end -}}
         background-repeat: {{ $backgroundRepeat }};
-    {{ end }}
-
+    {{- end -}}
 
 }
-{{ if .Site.Params.Theme.Footer.BackgroundColor }}
+
+
+
+{{- if .Site.Params.Theme.Footer.BackgroundColor -}}
 .footer-container { background-color: {{ .Site.Params.Theme.Footer.BackgroundColor }}; }
-{{ end }}
-{{ if .Site.Params.Theme.Footer.FontColor }}
+{{- end -}}
+{{- if .Site.Params.Theme.Footer.FontColor -}}
 .footer-container { color: {{ .Site.Params.Theme.Footer.FontColor }}; }
-{{ end }}
-{{ if .Site.Params.Theme.Footer.LinkColor }}
+{{- end -}}
+{{- if .Site.Params.Theme.Footer.LinkColor -}}
 .footer-container a { color: {{ .Site.Params.Theme.Footer.LinkColor }}; }
-{{ end }}
-{{ if .Site.Params.Theme.Subfooter.BackgroundColor }}
+{{- end -}}
+{{- if .Site.Params.Theme.Subfooter.BackgroundColor -}}
 .subfooter-container { background-color: {{ .Site.Params.Theme.Subfooter.BackgroundColor }}; }
-{{ end }}
-{{ if .Site.Params.Theme.Subfooter.FontColor }}
+{{- end -}}
+{{- if .Site.Params.Theme.Subfooter.FontColor -}}
 .subfooter-container { color: {{ .Site.Params.Theme.Subfooter.FontColor }}; }
-{{ end }}
-{{ if .Site.Params.Theme.Sobfooter.LinkColor }}
+{{- end -}}
+{{- if .Site.Params.Theme.align.LinkColor -}}
 .subfooter-container a { color: {{ .Site.Params.Theme.Subfooter.LinkColor }}; }
-{{ end }}
-
-
-
-
+{{- end -}}
 </style>
+
+{{/* 
+[params.fonts]
+   
+    headerTitle = '' # set font, use string, e.g. "Lucida, Verdana, sans-serif". You can use any font value. Please activate Google Font option if you want to include Google Fonts, see their names on https://fonts.google.com/
+    headerTitleGoogleFont = true # If the font in the above variable is a Google font, set this option to true. 
+    headerTitleVariant = '' # font variant, if available, e.g. "regular", "bold" etc. Not every font is available in multiple variants.
+    headerTitleSize = '' # set font size, empty for default settings. Valid values are '20px', '1.2em' and so on
+    
+*/}}
+
+
+{{/* Header Title Font Settings */}}
+    {{- $headerTitleVariant := "" -}}
+    {{- if .Site.Params.Fonts.headerTitleVariant -}}
+        {{- $headerTitleVariant = (printf ":%s" .Site.Params.Fonts.headerTitleVariant) -}}
+    {{- end -}}
+    {{- if .Site.Params.Fonts.headerTitleGoogleFont -}}
+        {{- safeHTML (printf "<link id=\"typography-header-title-font\" rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css?%s\">" (querify "family" (printf "%s%s" (trim .Site.Params.Fonts.HeaderTitle "\"") $headerTitleVariant ))    ) -}}
+    {{- end -}}
+<style id="typography-title" type="text/css">
+    {{- if .Site.Params.Fonts.headerTitle -}}
+    #site-header-text a {
+        font-family: {{ safeCSS .Site.Params.Fonts.HeaderTitle }};
+    }
+    {{- end -}}
+    {{- if .Site.Params.Fonts.headerTitleSize -}}
+    #site-header-text a {
+        font-size: {{ .Site.Params.Fonts.headerTitleSize }}; 
+    }
+
+    {{- end -}}
+</style>
+
+
+{{/* Header Subtitle Font Settings */}}
+    {{- $headerSubtitleVariant := "" -}}
+    {{- if .Site.Params.Fonts.headerSubtitleVariant -}}
+        {{- $headerSubtitleVariant = (printf ":%s" .Site.Params.Fonts.headerSubtitleVariant) -}}
+    {{- end -}}
+    {{- if .Site.Params.Fonts.headerSubtitleGoogleFont -}}
+        {{- safeHTML (printf "<link id=\"typography-header-subtitle-font\" rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css?%s\">" (querify "family" (printf "%s%s" (trim .Site.Params.Fonts.HeaderSubtitle "\"") $headerSubtitleVariant ))    ) -}}
+    {{- end -}}
+<style id="typography-subtitle" type="text/css">
+    {{- if .Site.Params.Fonts.headerSubtitle -}}
+    #site-description {
+        font-family: {{ safeCSS .Site.Params.Fonts.HeaderSubtitle }};
+    }
+    {{- end -}}
+    {{- if .Site.Params.Fonts.headerSubtitleSize -}}
+    #site-description {
+        font-size: {{ .Site.Params.Fonts.headerSubtitleSize }}; 
+    }
+
+    {{- end -}}
+</style>
+
+
+
+
+
 {{ if not .Site.Params.Navbar.FixedTop }}
-    {{ if and .Site.Params.Theme.Header.header_background_transp .Site.Params.Theme.Header.header_color_bg }}
+    {{/* if and .Site.Params.Theme.Header.header_background_transp .Site.Params.Theme.Header.header_color_bg */}}
     <script type="text/javascript">
-        var azbalacSettingHeaderColor = { 'bg': '{{ .Site.Params.Theme.Header.header_color_bg }}',
-            'transp': '{{ .Site.Params.Theme.Header.header_background_transp }}'
+        var azbalacSettingHeaderColor = { 'bg': '{{ $overlayBackgroundColorFallback }}',
+            'transp': '{{ $overlayTransparency }}'
             };
 
     </script>
     <style type="text/css">
         #site-header-text a, #site-description {
-    
-            background: {{ .Site.Params.Theme.Header.header_color_bg}}; /* fallback color */
-            background: {{ .Site.Params.Theme.Header.header_color_bg }}{{ .Site.Params.Theme.Header.header_background_transp_hex }};
+                background: "{{ safeCSS $overlayBackgroundColorFallback }}"; /* fallback color */
+            background: {{ safeCSS $overlayBackgroundColor }};
             
         }
     </style>
-    {{ end }}
+    {{/* end */}}
     {{ if .Site.Params.Theme.Header.OverlayDistanceBetween }}
     <style type="text/css">
         #site-header-box-title {
-            margin-bottom: '{{ .Site.Params.Theme.Header.OverlayDistanceBetween }}px';
+            margin-bottom: {{ .Site.Params.Theme.Header.OverlayDistanceBetween }}px;
         }
     </style>
     {{ end }}
@@ -121,4 +200,9 @@ body {
     </style>
     {{ end }}
 {{ end }}
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
 </head>

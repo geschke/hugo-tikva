@@ -46,37 +46,37 @@ $content['headerOptions']['header_container'] = ['container_class' => $headerCon
 
 */}}
 
-  {{ $overlayBackgroundColor := "#000000" }}
-{{ if .Site.Params.Theme.Header.OverlayBackgroundColor }}
-    {{ $overlayBackgroundColor = .Site.Params.Theme.Header.OverlayBackgroundColor }}
-{{ end }}
-{{ $overlayTransparency := 70 }} {{/* default transparency 70% */}} 
-{{ if .Site.Params.Theme.Header.OverlayTransparency }}
-    {{ $overlayTransparency = int .Site.Params.Theme.Header.OverlayTransparency }}
-{{ end }}
 
-{{ $overlayBackgroundTranspHex := math.Round (mul (div 255.0 100.0) $overlayTransparency) }}
+{{/*  default lt, left/top */}}
+{{- $headerContainerClass := " fixed-top " -}}
+{{- $headerBoxClassTitle := " d-flex justify-content-start " -}}
+{{- $headerBoxClassSubtitle := " d-flex justify-content-start " -}}
 
-{{ $foo := "#4488ff" }}
-{{ $foo = trim $foo "#" }}
-{{ $foo }}
-<p>
-{{ $rr := substr $foo 0 2 }}
-{{ $gg := substr $foo 2 2 }}
-{{ $bb := substr $foo 4 2 }}
-{{ int (printf "0x%s" $rr) }} || {{ int (printf "0x%s" $gg) }} || {{ int (printf "0x%s" $bb) }}
-<p>
-{{ printf "0x%s" "ff" }} 
-<p>
-{{ int (printf "0x%s" "ff") }}
-<p>
-{{ $overlayBackgroundTranspHex }}
+{{- if (eq .Site.Params.Theme.Header.OverlayAlignment "mt") -}}
+    {{- $headerContainerClass = " fixed-top " -}}
+    {{- $headerBoxClassTitle = " d-flex justify-content-center " -}}
+    {{- $headerBoxClassSubtitle = " d-flex justify-content-center " -}}
+{{- else if (eq .Site.Params.Theme.Header.OverlayAlignment "rt") -}}
+    {{- $headerContainerClass = " fixed-top " -}}
+    {{- $headerBoxClassTitle = " d-flex justify-content-end " -}}
+    {{- $headerBoxClassSubtitle = " d-flex justify-content-end " -}}
+{{- else if (eq .Site.Params.Theme.Header.OverlayAlignment "lb") -}}
+    {{- $headerContainerClass = " fixed-bottom " -}}
+    {{- $headerBoxClassTitle = " d-flex justify-content-start " -}}
+    {{- $headerBoxClassSubtitle = " d-flex justify-content-start " -}}
+{{- else if (eq .Site.Params.Theme.Header.OverlayAlignment "mb") -}}
+    {{- $headerContainerClass = " fixed-bottom " -}}
+    {{- $headerBoxClassTitle = " d-flex justify-content-center " -}}
+    {{- $headerBoxClassSubtitle = " d-flex justify-content-center " -}}
+{{- else if (eq .Site.Params.Theme.Header.OverlayAlignment "rt") -}}
+    {{- $headerContainerClass = " fixed-bottom " -}}
+    {{- $headerBoxClassTitle = " d-flex justify-content-end " -}}
+    {{- $headerBoxClassSubtitle = " d-flex justify-content-end " -}}
+{{- end -}}
 
-
-
-<div id="header" role="banner" style="{{ if .Site.Params.Theme.Header.BackgroundColor }}background-color: 
-{{ .Site.Params.Theme.Header.BackgroundColor }};{{ end }}
-{{ if .Site.Params.Theme.Header.FontColor }}color: {{  .Site.Params.Theme.Header.FontColor }};{{ end }}">
+<div id="header" role="banner" style="{{- if .Site.Params.Theme.Header.BackgroundColor -}}background-color: 
+{{ .Site.Params.Theme.Header.BackgroundColor }};{{- end -}}
+{{ if .Site.Params.Theme.Header.FontColor }}color: {{  .Site.Params.Theme.Header.FontColor }};{{- end -}}">
 
     <div class="container">
         <header class="masthead">
@@ -105,13 +105,13 @@ $content['headerOptions']['header_container'] = ['container_class' => $headerCon
 
                 {{ if and .Site.Params.Theme.Header.TitleOnImage .Site.Params.Theme.Header.DisplayHeaderText }}
 
-                <div id="site-header-container-overlay" class="position-absolute {{ .Site.Params.Theme.Header.header_container.container_class }}">
-                    <div id="site-header-box-title" class="{{ .Site.Params.Theme.Header.header_container.box_class_title }}">
+                <div id="site-header-container-overlay" class="position-absolute {{ $headerContainerClass }}">
+                    <div id="site-header-box-title" class="{{ $headerBoxClassTitle }}">
                         <h1 class="azbalac-title" id="site-header-text"><a class="header-url" style="{{ if .Site.Params.Theme.Header.FontColorTitle }}color: {{ .Site.Params.Theme.Header.FontColorTitle }};{{ end }}" href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></h1>
                     </div>
                     {{ if .Site.Params.Subtitle }}
-                    <div id="site-header-box-subtitle" class="{{ .Site.Params.Theme.Header.header_container.box_class_subtitle }}">   
-                        <h2 class="azbalac-subtitle" id="site-description" style="{{ if .Site.Params.Theme.Header.headerStyles.colorFgSubtitle }}color: {{ .Site.Params.Theme.Header.headerStyles.colorFgSubtitle }};{{ end }}">{{ .Site.Params.Subtitle }}</h2>
+                    <div id="site-header-box-subtitle" class="{{ $headerBoxClassSubtitle }}">   
+                        <h2 class="azbalac-subtitle" id="site-description" style="{{ if .Site.Params.Theme.Header.FontColorSubtitle }}color: {{ .Site.Params.Theme.Header.FontColorSubtitle }};{{ end }}">{{ .Site.Params.Subtitle }}</h2>
                     </div>{{ end }}
                 </div>
                 {{ end }}
