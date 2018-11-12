@@ -3,7 +3,7 @@
 {{- partial "head.html" . -}}
 
 <body>
-    {{ if .Site.Params.Navbar.FixedTop }}
+    {{ if .Site.Params.Navbar.fixedTop }}
         {{- partial "header_fixed_top.html" . -}}
     {{ else }}
         {{- partial "header_default.html" . -}}
@@ -26,8 +26,16 @@
     {{ end }}
 
     <div id="media-width-detection-element"></div>
-</body>
 
+    {{- if .Site.Params.Analytics.Matomo.Enabled -}}
+{{ partial "analytics/matomo.html" . }}
+{{- end -}}
+{{ template "_internal/google_analytics_async.html" . }}
+{{- if .Site.Params.Analytics.Yandexmetrica.Enabled -}}
+{{ partial "analytics/yandexmetrica.html" . }}
+
+{{- end -}}
 {{- partial "bottom.html" . -}}
 
+</body>
 </html>
