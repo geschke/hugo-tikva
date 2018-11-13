@@ -35,7 +35,7 @@
         <header class="masthead">
             <div>
                 <div id="site-header-container-above" class="row align-items-center">
-                    {{ if not .Site.Params.Theme.Header.TitleOnImage }}
+                    {{ if or (not .Site.Params.Theme.Header.TitleOnImage) (not .Site.Params.Theme.Header.Image) }}
                         <div class="col">
                             {{ if .Site.Params.Theme.Header.DisplayHeaderText }}
                                 <h1 id="site-header-text"><a class="header-url" style="{{ if .Site.Params.Theme.Header.FontColorTitle }}color: {{ .Site.Params.Theme.Header.FontColorTitle }};{{ end }}" href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></h1>
@@ -53,8 +53,8 @@
             
 
             <div id="site-header-above">
-                <a href="{{ .Site.BaseURL }}" rel="home"><img id="site-header-image" src="{{ .Site.BaseURL }}{{ .Site.Params.Theme.Header.Image }}" width="1" height="1" data-width="{{ .Site.Params.Theme.Header.Width }}" data-height="{{ .Site.Params.Theme.Header.Height }}" alt="{{ .Site.Params.Theme.Header.AltText }}">
-                </a>
+                {{- if .Site.Params.Theme.Header.Image -}}<a href="{{ .Site.BaseURL }}" rel="home"><img id="site-header-image" src="{{ .Site.BaseURL }}{{ .Site.Params.Theme.Header.Image }}" width="1" height="1" data-width="{{ .Site.Params.Theme.Header.Width }}" data-height="{{ .Site.Params.Theme.Header.Height }}" alt="{{ .Site.Params.Theme.Header.AltText }}">
+                </a>{{- end -}}
 
                 {{ if and .Site.Params.Theme.Header.TitleOnImage .Site.Params.Theme.Header.DisplayHeaderText }}
 

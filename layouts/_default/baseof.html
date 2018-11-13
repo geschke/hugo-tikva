@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html>
-{{- partial "head.html" . -}}
+<html lang="{{- default "" .Site.LanguageCode -}}">
+{{ partial "head.html" . }}
 
 <body>
 {{- $navbarStyle := default .Site.Params.Navbar.Style -}}

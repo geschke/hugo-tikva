@@ -156,8 +156,6 @@
         } else { // >= 1200
             mediaDetectSize = 'xl';
 		}
-		console.log(mediaSize);
-		console.log(mediaDetectSize);
         if (mediaDetectSize != mediaSize || mediaDetectSize == 'xs') {
             mediaSize = mediaDetectSize;
             $.headerImageResize(mediaSize);
@@ -194,7 +192,7 @@
 	} );
 
     $(window).on('load', function() {
-		console.log(azbalacHeaderImage);
+
         if (!$('#site-header-image').length) {
             return;
         }
@@ -241,9 +239,7 @@ $( '.dropdown-menu a.dropdown-toggle' ).on( 'click', function ( e ) {
 
 
 $(window).on('load', function() {
-var foobar = $('#main').width();
-console.log(foobar);
-var elementSize = foobar;
+var elementSize = $('#main').width();
 if (elementSize < 540) {
 	mediaDetectSize = 'xs';
 } else if (elementSize >= 540 && elementSize < 720) { 
@@ -255,8 +251,6 @@ if (elementSize < 540) {
 } else { // >= 1200
 	mediaDetectSize = 'xl';
 }
-console.log(mediaSize);
-console.log(mediaDetectSize);
 });
 
  
