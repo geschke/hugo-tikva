@@ -3,7 +3,11 @@
 {{- partial "head.html" . -}}
 
 <body>
-    {{ if .Site.Params.Navbar.fixedTop }}
+{{- $navbarStyle := "fixed-top" -}}
+{{- if .Site.Params.Navbar.Style -}}
+    {{- $navbarStyle = .Site.Params.Navbar.Style -}}
+{{- end -}}
+    {{ if eq $navbarStyle "fixed-top"  }}
         {{- partial "header_fixed_top.html" . -}}
     {{ else }}
         {{- partial "header_default.html" . -}}
@@ -21,8 +25,8 @@
     </div>
 
     {{ block "footer" . }}
-    {{ partial "footer_container.html" . }}
-    {{ partial "subfooter_container.html" . }}
+        {{ partial "footer_container.html" . }}
+        {{ partial "subfooter_container.html" . }}
     {{ end }}
 
     <div id="media-width-detection-element"></div>

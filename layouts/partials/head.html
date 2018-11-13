@@ -48,9 +48,13 @@
 {{- $overlayBackgroundColor := printf " rgba(%d,%d,%d,%s)" $rr $gg $bb $overlayBackgroundTranspHex -}}
 
 <style>
-body {
+{{- $navbarStyle := "fixed-top" -}}
+{{- if .Site.Params.Navbar.Style -}}
+    {{- $navbarStyle = .Site.Params.Navbar.Style -}}
+{{- end -}}
 
-    {{- if .Site.Params.Navbar.fixedTop -}}
+body {
+    {{- if eq $navbarStyle "fixed-top" -}}
     /* Move down content because we have a fixed navbar that is 60px tall */
 
         {{- $paddingTop := 60 -}}
@@ -251,7 +255,7 @@ body {
 </style>
 
 
-{{ if not .Site.Params.Navbar.FixedTop }}
+{{ if eq $navbarStyle "header" }}
     {{/* if and .Site.Params.Theme.Header.header_background_transp .Site.Params.Theme.Header.header_color_bg */}}
     <script type="text/javascript">
         var azbalacSettingHeaderColor = { 'bg': '{{ $overlayBackgroundColorFallback }}',

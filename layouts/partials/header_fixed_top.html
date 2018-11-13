@@ -1,4 +1,13 @@
-<nav class="navbar fixed-top navbar-expand-lg {{ .Site.Params.Navbar.ColorScheme }} {{ .Site.Params.Navbar.BgScheme }}">
+{{- $navbarColorScheme := "navbar-dark" -}}
+{{- if .Site.Params.Navbar.ColorScheme -}}
+{{- $navbarColorScheme = .Site.Params.Navbar.ColorScheme -}}
+{{- end -}}
+{{- $navbarBgScheme := "bg-primary" -}}
+{{- if .Site.Params.Navbar.BgScheme -}}
+{{- $navbarBgScheme = .Site.Params.Navbar.BgScheme -}}
+{{- end -}}
+
+<nav class="navbar fixed-top navbar-expand-lg {{ $navbarColorScheme }} {{ $navbarBgScheme }}">
     <a class="navbar-brand" href="{{ .Site.BaseURL }}">{{ if .Site.Params.Navbar.BrandImage }}<img src="{{ .Site.BaseURL }}{{ .Site.Params.Navbar.BrandImage }}" width="30" height="30" class="d-inline-block align-top" alt="">&nbsp; {{ end }}{{ .Site.Title }}</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMain" aria-controls="navbarMain"
     aria-expanded="false" aria-label="Toggle navigation">

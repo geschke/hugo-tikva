@@ -1,10 +1,14 @@
-<div class="footer-container" style="">
+{{- if .Site.Params.Theme.Footer.Enabled -}}
+    <div class="footer-container" style="">
     <div class="container">
         <footer>
 
 
             <div class="row">
-
+                {{- $footerColumns := 3 -}}
+                {{- if .Site.Params.Theme.Footer.NumberColumns -}}
+                    {{- $footerColumns = .Site.Params.Theme.Footer.NumberColumns -}}
+                {{- end -}}
                 {{ range first .Site.Params.Theme.Footer.NumberColumns (where .Site.Pages "Section" "footer") }}
 
                 {{ partial "footer_column.html" . }}
@@ -14,3 +18,4 @@
         </footer>
     </div>
 </div>
+{{- end -}}
