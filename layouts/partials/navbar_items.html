@@ -1,29 +1,29 @@
-                        {{ $currentPage := . }}
-                        {{ range .Site.Menus.main }}
-                        {{ if .HasChildren }}
-                        <li class="nav-item dropdown {{ if $currentPage.HasMenuCurrent "main" . }}active{{ end }}">
-                          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false">
-                            {{ .Pre }}
-                            {{ .Name }}
-                          </a>
-                          <div class="sub-menu dropdown-menu" aria-labelledby="navbarDropdown">
-                            {{ range .Children }}
-                  
-                            <a class="dropdown-item" href="{{ .URL }}">{{ .Name }}</a>
-                            {{ end }}
-                          </div>
-                        </li>
-                        <span class="mx-2"></span>
-                        {{ else }}
-                        <li class="nav-item {{ if eq $currentPage.URL .URL }}active{{ end }}">
-                          <a class="nav-link" href="{{ .URL }}">
-                            {{ .Pre }}
-                            {{ .Name }}
-                          </a>
-                        </li>
-                        <span class="mx-2"></span>
-                        {{ end }}
-                        {{ end }}
+{{ $currentPage := . }}
+{{ range .Site.Menus.main }}
+  {{ if .HasChildren }}
+  <li class="nav-item dropdown {{ if $currentPage.HasMenuCurrent "main" . }}active{{ end }}">
+    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+      aria-expanded="false">
+      {{ .Pre }}
+      {{ .Name }}
+    </a>
+    <div class="sub-menu dropdown-menu" aria-labelledby="navbarDropdown">
+      {{ range .Children }}
+
+      <a class="dropdown-item" href="{{ .URL }}">{{ .Name }}</a>
+      {{ end }}
+    </div>
+  </li>
+  <span class="mx-2"></span>
+  {{ else }}
+  <li class="nav-item {{ if eq $currentPage.URL .URL }}active{{ end }}">
+    <a class="nav-link" href="{{ .URL }}">
+      {{ .Pre }}
+      {{ .Name }}
+    </a>
+  </li>
+  <span class="mx-2"></span>
+  {{ end }}
+{{ end }}
                   
 

@@ -1,0 +1,8 @@
+<aside class="col-md-3 tikva-sidebar">
+  
+    {{ range sort (where .Site.RegularPages "Type" "sidebar")  }}
+           {{ partial "sidebar_item.html" . }}
+    {{ end }}
+
+   
+</aside><!-- /.tikva-sidebar -->

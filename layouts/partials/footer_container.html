@@ -9,7 +9,7 @@
                 {{- if .Site.Params.Theme.Footer.NumberColumns -}}
                     {{- $footerColumns = .Site.Params.Theme.Footer.NumberColumns -}}
                 {{- end -}}
-                {{ range first .Site.Params.Theme.Footer.NumberColumns (where .Site.Pages "Section" "footer") }}
+                {{ range first .Site.Params.Theme.Footer.NumberColumns (where .Site.RegularPages "Type" "footer") | sort }}
 
                 {{ partial "footer_column.html" . }}
                 {{ end }}

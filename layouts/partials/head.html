@@ -48,12 +48,10 @@
 {{- $overlayBackgroundColor := printf " rgba(%d,%d,%d,%s)" $rr $gg $bb $overlayBackgroundTranspHex -}}
 
 <style>
-{{- $navbarStyle := "fixed-top" -}}
-{{- if .Site.Params.Navbar.Style -}}
-    {{- $navbarStyle = .Site.Params.Navbar.Style -}}
-{{- end -}}
+{{- $navbarStyle := default "fixed-top" .Site.Params.Navbar.Style -}}
 
 body {
+
     {{- if eq $navbarStyle "fixed-top" -}}
     /* Move down content because we have a fixed navbar that is 60px tall */
 
@@ -102,15 +100,6 @@ body {
 {{- end -}}
 </style>
 
-{{/* 
-[params.fonts]
-   
-    headerTitle = '' # set font, use string, e.g. "Lucida, Verdana, sans-serif". You can use any font value. Please activate Google Font option if you want to include Google Fonts, see their names on https://fonts.google.com/
-    headerTitleGoogleFont = true # If the font in the above variable is a Google font, set this option to true. 
-    headerTitleVariant = '' # font variant, if available, e.g. "regular", "bold" etc. Not every font is available in multiple variants.
-    headerTitleSize = '' # set font size, empty for default settings. Valid values are '20px', '1.2em' and so on
-    
-*/}}
 
 
 {{/* Header Title Font Settings */}}
@@ -194,10 +183,10 @@ body {
     {{- end -}}
     {{- if .Site.Params.Fonts.NavbarSize -}}
     nav#navbarMain {
-        font-size: {{ .Site.Params.Fonts.NavbarSize }}; 
+        font-size: {{ safeCSS .Site.Params.Fonts.NavbarSize }}; 
     }
     nav#navbarMain ul.dropdown-menu {
-        font-size: {{ .Site.Params.Fonts.NavbarSize }};
+        font-size: {{ safeCSS .Site.Params.Fonts.NavbarSize }};
     }
     {{- end -}}
 </style>
@@ -297,9 +286,10 @@ body {
     </style>
     {{ end }}
 {{ end }}
-  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
+{{ "<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->" | safeHTML }}
+{{ "<!--[if lt IE 9]>" | safeHTML }}
         <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
         <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
+{{ "<![endif]-->" | safeHTML }}
+
 </head>

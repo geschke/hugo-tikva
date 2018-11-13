@@ -3,8 +3,8 @@
     (function (d, w, c) {
         (w[c] = w[c] || []).push(function() {
             try {
-                w.yaCounter{{ .Site.Params.Analytics.Yandexmetrica.TagNumber }} = new Ya.Metrika2({
-                    id:{{ int .Site.Params.Analytics.Yandexmetrica.TagNumber }},
+                w.yaCounter{{ safeJS .Site.Params.Analytics.Yandexmetrica.TagNumber }} = new Ya.Metrika2({
+                    id: {{- safeJS .Site.Params.Analytics.Yandexmetrica.TagNumber -}},
                     clickmap:true,
                     trackLinks:true,
                     accurateTrackBounce:true,

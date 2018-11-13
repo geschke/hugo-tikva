@@ -3,10 +3,7 @@
 {{- partial "head.html" . -}}
 
 <body>
-{{- $navbarStyle := "fixed-top" -}}
-{{- if .Site.Params.Navbar.Style -}}
-    {{- $navbarStyle = .Site.Params.Navbar.Style -}}
-{{- end -}}
+{{- $navbarStyle := default .Site.Params.Navbar.Style -}}
     {{ if eq $navbarStyle "fixed-top"  }}
         {{- partial "header_fixed_top.html" . -}}
     {{ else }}
@@ -16,28 +13,35 @@
     <div id="main">
         <div class="container">
             <div class="row">
+
+                {{- if and (default false .Site.Params.Sidebar.Enabled) (eq "left" (default "right" .Site.Params.Sidebar.Style)) }}
+                {{ partial "sidebar_container.html" . }}
+                {{- end -}}  
                 <div class="col-md" id="content">
                     {{- block "main" . }}{{- end }}
                 </div>
-
+                {{- if and (default false .Site.Params.Sidebar.Enabled) (eq "right" (default "right" .Site.Params.Sidebar.Style)) }}
+                {{ partial "sidebar_container.html" . }}
+                {{- end -}}                
             </div>
         </div>
     </div>
 
     {{ block "footer" . }}
         {{ partial "footer_container.html" . }}
+    {{ end }}
+    {{ block "subfooter" . }}
         {{ partial "subfooter_container.html" . }}
     {{ end }}
 
     <div id="media-width-detection-element"></div>
 
     {{- if .Site.Params.Analytics.Matomo.Enabled -}}
-{{ partial "analytics/matomo.html" . }}
-{{- end -}}
+    {{ partial "analytics/matomo.html" . }}
+    {{- end -}}
 {{ template "_internal/google_analytics_async.html" . }}
 {{- if .Site.Params.Analytics.Yandexmetrica.Enabled -}}
-{{ partial "analytics/yandexmetrica.html" . }}
-
+    {{ partial "analytics/yandexmetrica.html" . }}
 {{- end -}}
 {{- partial "bottom.html" . -}}
 
