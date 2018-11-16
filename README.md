@@ -61,7 +61,7 @@ For more information read the official [setup guide](//gohugo.io/overview/instal
 
 Check out `exampleSite/config.toml` for theme configuration options and the contents of `exampleSite` folder.
 
-I've tried to comment as much as possible in the configuration file, bit the theme and documentation are far away from being complete. It is still work in progress and currently some features of Hugo aren't supported.
+I've tried to comment as much as possible in the configuration file, but the theme and documentation are far away from being complete. It is still work in progress and currently some features of Hugo aren't supported.
 
 ## Menu
 
