@@ -1,0 +1,1 @@
+Powered by [Hugo](https://gohugo.io). Theme [Tikva](https://github.com/geschke/hugo-tikva) by [Ralf Geschke](https://www.kuerbis.org). As you can see, this is an example of the area below the footer. You can change this.
