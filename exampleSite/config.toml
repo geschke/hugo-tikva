@@ -28,8 +28,8 @@ paginate = 2
     subtitle = "Example of Subtitle"
 
     dateFormat = "02.01.2006" # Format dates with Go's time formatting
-    showDate = true # Show date on summaries. This is a global setting. If the date should be shown, you have to add a "date" parameter to the content files, otherwise the default value will be used, which is something you don't want. 
-    showNumberOfWords = true # Show number of word on article header 
+    showDate = true # true|false: Show date on summaries. This is a global setting. If the date should be shown, you have to add a "date" parameter to the content files, otherwise the default value will be used, which is something you don't want.
+    showNumberOfWords = false # true|false: Show number of word on article header of single content page
 
 # Navigation bar settings
 
