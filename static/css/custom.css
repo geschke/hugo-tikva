@@ -96,7 +96,21 @@
 }*/
 
 
-/* Menu Settings - later... */
+
+
+/* Assistive text */
+
+.screen-reader-text {
+  position: absolute !important;
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+  overflow: hidden;
+  max-height:0px;
+}
+
+
+
+/* Menu Settings - later... maybe... */
 .main-nav ul {
   text-align: center;
   letter-spacing: -1em;
