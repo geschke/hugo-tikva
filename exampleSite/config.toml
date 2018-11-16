@@ -1,5 +1,4 @@
-baseURL = "http://gohlis/"
-#baseurl = "https://example.org/"
+baseurl = "https://example.com/"
 languageCode = "en_US"
 title = "Hugo Tikva Theme"
 
