@@ -1,7 +1,7 @@
 # Tikva Theme for Hugo
 
 Tikva is a minimalistic Hugo theme, based on [Bootstrap v4](https://getbootstrap.com/) CSS framework.
-It is a port of the Tikva theme which I developed a while ago for Grav CMS and WordPress, but there are also some features added from the (currently unpublished) Azbalac Theme for WordPress. 
+It is a port of the Tikva theme which I developed a while ago for Grav CMS and WordPress, but there are also some features added from the (currently unpublished) Azbalac Theme for WordPress.
 Tikva integrates multiple Bootstrap styles from the Bootswatch project and adds some customized styles.
 It's also possible to edit some color options by config option.
 
@@ -10,7 +10,7 @@ It's also possible to edit some color options by config option.
 * Responsive design, using the Bootstrap framework
 * More than 30 themes included, half of them newly created, the other half taken from the Bootswatch project
 * Three main layouts available: Content column without sidebar, sidebar on right and sidebar on left side
-* Customizable font settings (size, font type and variant), support of Google Fonts included 
+* Customizable font settings (size, font type and variant), support of Google Fonts included
 * Support of Google Analytics (with the internal async template), Matomo and Yandex Metrica
 * Flexible footer handling with multiple columns
 * Support of subfooter, i.e. an area below the footer to add some content like "Powered by..." as seen in the screenshots
@@ -52,16 +52,16 @@ Inside the folder of your Hugo site run:
 As a second option you can use the submodule feature of Git:
 
 ```bash
-    git submodule add https://github.com/geschke/hugo-tikva themes/hugo-tikva
+    git submodule add -f https://github.com/geschke/hugo-tikva themes/hugo-tikva
 ```
 
 For more information read the official [setup guide](//gohugo.io/overview/installing/) of Hugo.
 
 ## Configuration
 
-Check out `exampleSite/config.toml` for theme configuration options and the contents of `exampleSite` folder. 
+Check out `exampleSite/config.toml` for theme configuration options and the contents of `exampleSite` folder.
 
-I've tried to comment as much as possible in the configuration file, bit the theme and documentation are far away from being complete. It is still work in progress and currently some features of Hugo aren't supported. 
+I've tried to comment as much as possible in the configuration file, bit the theme and documentation are far away from being complete. It is still work in progress and currently some features of Hugo aren't supported.
 
 ## Menu
 
@@ -78,5 +78,5 @@ If you find a bug or have an idea for a feature, feel free to use the [issue tra
 ## Thanks to / Used third-party components
 
 * The [Bootstrap](https://getbootstrap.com) project, which is licensed under the [MIT license]
-* Thomas Park and the contributors of the [Bootswatch](https://bootswatch.com/) project. 
+* Thomas Park and the contributors of the [Bootswatch](https://bootswatch.com/) project.
 * [Font Awesome](https://fontawesome.com/v4.7.0/)

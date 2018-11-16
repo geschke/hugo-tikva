@@ -2,9 +2,9 @@ name = "Tikva"
 license = "MIT"
 licenselink = "https://github.com/geschke/hugo-tikva/LICENSE"
 description = "Tikva is a minimalistic Hugo theme, based on Bootstrap 4 framework"
-homepage = "https://www.kuerbis.org/hugo-tikva/"
+homepage = "https://github.com/geschke/hugo-tikva/"
 tags = ["theme", "core", "modern", "responsive", "bootstrap", "minimal", "blog", "font awesome", "white", "dark", "light" ]
-features = ["responsive"]
+features = ["responsive","blog"]
 min_version = "0.41"
 
 [author]
@@ -16,5 +16,3 @@ min_version = "0.41"
   name = "Tikva theme for Grav CMS"
   homepage = "https://www.kuerbis.org/tikva-theme-for-grav-cms/"
   repo = "https://github.com/geschke/grav-theme-tikva"
-
-# cookie consent stuff, maybe use https://cookieconsent.insites.com/download/
