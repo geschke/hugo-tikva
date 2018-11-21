@@ -1,6 +1,6 @@
 name = "Tikva"
 license = "MIT"
-licenselink = "https://github.com/geschke/hugo-tikva/LICENSE"
+licenselink = "https://github.com/geschke/hugo-tikva/blob/master/LICENSE.md"
 description = "Tikva is a minimalistic Hugo theme, based on Bootstrap 4 framework"
 homepage = "https://github.com/geschke/hugo-tikva/"
 tags = ["theme", "core", "modern", "responsive", "bootstrap", "minimal", "blog", "font awesome", "white", "dark", "light" ]
