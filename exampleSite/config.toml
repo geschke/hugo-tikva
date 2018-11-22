@@ -31,8 +31,6 @@ paginate = 2
     showNumberOfWords = false # true|false: Show number of word on article header of single content page
     hideMeta = false # Hide meta information on single pages
 
-    #contentSectionsPath =  '/content_sections/' # Relative path to content sections folder. Please add leading and trailing '/'. The content section path contains the folders with markdown files for footer, subfooter and sidebar. It is possible to change the name of the folder. If this option is not set, the default '/content_sections/' will be used.
-
 
 # Navigation bar settings
 
@@ -104,6 +102,13 @@ paginate = 2
 
 # Footer configuration
 
+# To create a footer, create a directory "sections/footer" into your project’s content directory.
+# Then add some content files (.md or .html) to the footer folder AND create an index.md file with the Front Matter setting
+# headless: true
+# Without the "headless" setting the sidebar will not be displayed! 
+# See https://gohugo.io/content-management/page-bundles/#headless-bundle 
+# You can modify the style with a partial "footer_column.html", see example in "layouts/partials/".
+
 [params.theme.footer]
     enabled = true # Show the footer part
     #numberColumns = 3 # Set number of columns available in footer of a page. Use the "footer" folder in the page structure to add content. If nothing is set, the default number is 3. Currently.i.e. since v0.2 not used, the number of columns is identical to the number of files in footer directory.
@@ -113,7 +118,12 @@ paginate = 2
 
 # Subfooter configuration
 
-# To use the subfooter, plase create a folder named "subfooter" in your "content" folder and add a markdown (or html) file. The first found file will be used as subfolder content
+# To create a subfooter, create a directory "sections/subfooter" into your project’s content directory.
+# Then add some content files (.md or .html) to the subfooter folder AND create an index.md file with the Front Matter setting
+# headless: true
+# Without the "headless" setting the sidebar will not be displayed! 
+# See https://gohugo.io/content-management/page-bundles/#headless-bundle 
+# You can modify the style with a partial "subfooter_item.html", see example in "layouts/partials/".
 
 [params.theme.subfooter]
     enabled = true # Show the content below the footer
@@ -172,8 +182,11 @@ paginate = 2
     
 # Sidebar section
 
-# To create a sidebar, it's recommended to add a folder "sidebar" into a directory "content_sections" of your project’s root directory.
-# Then add some content files (.md or .html) to the sidebar folder. 
+# To create a sidebar, create a directory "sections/sidebar" into your project’s content directory.
+# Then add some content files (.md or .html) to the sidebar folder AND create an index.md file with the Front Matter setting
+# headless: true
+# Without the "headless" setting the sidebar will not be displayed! 
+# See https://gohugo.io/content-management/page-bundles/#headless-bundle 
 # You can modify the style with a partial "sidebar_item.html", see example in "layouts/partials/".
 
 [params.sidebar]

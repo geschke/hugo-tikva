@@ -3,22 +3,13 @@
     <div class="container">
         <footer>
 
-
             <div class="row">
-
-                {{- $path := printf "%s%s" (default "/content_sections/" .Site.Params.contentSectionsPath ) "footer/" -}}
-                {{- $files := readDir $path -}}
-                {{- $footerRow := "" -}}
-                {{- range $files | sort -}}
-                    {{- $fileName := printf "%s%s" $path .Name -}}
-                        
-                    {{- $footerRow = readFile $fileName | markdownify -}}
-
-                    {{ partial "footer_column.html" (dict "Page" . "Content" $footerRow) }}
-
-                {{- end -}}
-
-              
+            {{ $footerItems := .Site.GetPage "/sections/footer" }}
+            {{ if $footerItems }}
+                {{ range sort $footerItems.Resources "Name" }}
+                    {{ partial "footer_column.html" . }}
+                {{ end }}
+            {{ end }}              
             </div>
         </footer>
     </div>
