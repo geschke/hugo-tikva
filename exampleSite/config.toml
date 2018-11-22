@@ -18,7 +18,6 @@ paginate = 2
 #googleAnalytics = "UA-123-45"
 
 
-
 # For all color settings, please use the format "#rrggbb". 
 
 # Generic parameters
@@ -30,6 +29,10 @@ paginate = 2
     dateFormat = "02.01.2006" # Format dates with Go's time formatting
     showDate = true # true|false: Show date on summaries. This is a global setting. If the date should be shown, you have to add a "date" parameter to the content files, otherwise the default value will be used, which is something you don't want.
     showNumberOfWords = false # true|false: Show number of word on article header of single content page
+    hideMeta = false # Hide meta information on single pages
+
+    #contentSectionsPath =  '/content_sections/' # Relative path to content sections folder. Please add leading and trailing '/'. The content section path contains the folders with markdown files for footer, subfooter and sidebar. It is possible to change the name of the folder. If this option is not set, the default '/content_sections/' will be used.
+
 
 # Navigation bar settings
 
@@ -103,7 +106,7 @@ paginate = 2
 
 [params.theme.footer]
     enabled = true # Show the footer part
-    numberColumns = 3 # Set number of columns available in footer of a page. Use the "footer" folder in the page structure to add content. If nothing is set, the default number is 3
+    #numberColumns = 3 # Set number of columns available in footer of a page. Use the "footer" folder in the page structure to add content. If nothing is set, the default number is 3. Currently.i.e. since v0.2 not used, the number of columns is identical to the number of files in footer directory.
     fontColor = '#f9fcf9' # set #rgb code, leave empty for default
     linkColor = '' # Set color of links as #rrggbb code, leave empty for default
     backgroundColor = '#29281f' # Set color of background as #rrggbb code, leave empty for default
@@ -169,10 +172,8 @@ paginate = 2
     
 # Sidebar section
 
-# To create a sidebar, it's recommended to add a folder "sidebar" into the "content" directory. Then you can 
-# add some content files (.md or .html) to the sidebar folder. 
-# Another approach is to use the "sidebar" type in the header section in the content files. 
-# Every content file in the sidebar folder or which is declared as "sidebar" type will be displayed in the sidebar. 
+# To create a sidebar, it's recommended to add a folder "sidebar" into a directory "content_sections" of your project’s root directory.
+# Then add some content files (.md or .html) to the sidebar folder. 
 # You can modify the style with a partial "sidebar_item.html", see example in "layouts/partials/".
 
 [params.sidebar]

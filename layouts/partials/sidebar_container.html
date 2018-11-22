@@ -1,8 +1,26 @@
 <aside class="col-md-3 tikva-sidebar">
   
-    {{ range sort (where .Site.RegularPages "Type" "sidebar")  }}
-           {{ partial "sidebar_item.html" . }}
-    {{ end }}
+  {{ .GetPage "/content_sections/sidebar/content02.md" }}
+<p>foo</p>
+
+    {{- $path := printf "%s%s" (default "/content_sections/" .Site.Params.contentSectionsPath ) "sidebar/" -}}
+
+
+    {{- $files := readDir $path -}}
+    {{- $sidebarItem := "" -}}
+    {{- range $files | sort -}}
+        {{- $fileName := printf "%s%s" $path .Name -}}
+            
+        {{- $sidebarItem = readFile $fileName | markdownify -}}
+
+{{ $fileName }}
+
+
+                    {{ partial "sidebar_item.html" (dict "Page" . "Content" $sidebarItem) }}
+
+                {{- end -}}
+
+   
 
    
 </aside><!-- /.tikva-sidebar -->

@@ -5,15 +5,20 @@
 
 
             <div class="row">
-                {{- $footerColumns := 3 -}}
-                {{- if .Site.Params.Theme.Footer.NumberColumns -}}
-                    {{- $footerColumns = .Site.Params.Theme.Footer.NumberColumns -}}
+
+                {{- $path := printf "%s%s" (default "/content_sections/" .Site.Params.contentSectionsPath ) "footer/" -}}
+                {{- $files := readDir $path -}}
+                {{- $footerRow := "" -}}
+                {{- range $files | sort -}}
+                    {{- $fileName := printf "%s%s" $path .Name -}}
+                        
+                    {{- $footerRow = readFile $fileName | markdownify -}}
+
+                    {{ partial "footer_column.html" (dict "Page" . "Content" $footerRow) }}
+
                 {{- end -}}
-                {{ range first .Site.Params.Theme.Footer.NumberColumns (where .Site.RegularPages "Type" "footer") | sort }}
 
-                {{ partial "footer_column.html" . }}
-                {{ end }}
-
+              
             </div>
         </footer>
     </div>
