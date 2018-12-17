@@ -1,4 +1,4 @@
-<!-- Matomo -->
+{{ "<!-- Matomo -->" | safeHTML }}
 <script type="text/javascript">
   var _paq = _paq || [];
   /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
@@ -13,4 +13,4 @@
   })();
 </script>
 <noscript><p><img src="//{{ replace (replace .Site.Params.Analytics.Matomo.Url "https://" "") "http://" "" }}/piwik.php?idsite={{ .Site.Params.Analytics.Matomo.SiteId }}&amp;rec=1" style="border:0;" alt="" /></p></noscript>
-<!-- End Matomo Code -->
+{{ "<!-- End Matomo Code -->" | safeHTML }}
