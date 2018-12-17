@@ -285,12 +285,14 @@ body {
         }
     </style>
     {{ end }}
+
 {{ end }}
 {{ "<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->" | safeHTML }}
 {{ "<!--[if lt IE 9]>" | safeHTML }}
         <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
         <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 {{ "<![endif]-->" | safeHTML }}
+{{- partial "head_includes.html" . }}
 
 {{- partial "javascript_header.html" . }}
 </head>
