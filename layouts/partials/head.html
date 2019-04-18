@@ -1,6 +1,6 @@
 <head>
     <meta charset="utf-8" />
-    <title>{{ .Page.Title }}{{ if .Site.Params.AppendSiteTitle }} | {{ .Site.Title }}{{ end }}</title>
+    <title>{{ if .Page.Title }}{{ .Page.Title }}{{ end }}{{ if and (.Page.Title) (.Site.Params.AppendSiteTitle) }} | {{ end }}{{ if .Site.Params.AppendSiteTitle }}{{ .Site.Title }}{{ end }}</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
