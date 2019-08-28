@@ -11,8 +11,9 @@
                 {{ range sort $subfooterItems.Resources "Name" }}
                     {{ partial "subfooter_item.html" . }}
                 {{ end }}
-            {{ end }}
-
+            {{ else if .Site.Params.Theme.Subfooter.demoContent }}
+                {{ safeHTML .Site.Params.Theme.Subfooter.demoContent }}
+            {{ end}}
                   
                 </div>
             </div>

@@ -9,7 +9,14 @@
                 {{ range sort $footerItems.Resources "Name" }}
                     {{ partial "footer_column.html" . }}
                 {{ end }}
-            {{ end }}              
+            {{ else if .Site.Params.Theme.Footer.demoColumn }}    
+                {{ range .Site.Params.Theme.Footer.demoColumn }}
+                    <div class="col">
+                        {{ .text | safeHTML }}
+                    </div>
+                {{ end }}
+            {{ end }}
+
             </div>
         </footer>
     </div>

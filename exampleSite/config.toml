@@ -108,6 +108,8 @@ paginate = 2
 # Without the "headless" setting the sidebar will not be displayed! 
 # See https://gohugo.io/content-management/page-bundles/#headless-bundle 
 # You can modify the style with a partial "footer_column.html", see example in "layouts/partials/".
+# If you don't have content files in the footer area, the demo texts from below will be shown. If you don't want this, please delete
+# the [[params.theme.footer.demoColumn]] entries or just disable the footer by setting enabled = false. 
 
 [params.theme.footer]
     enabled = true # Show the footer part
@@ -115,6 +117,17 @@ paginate = 2
     fontColor = '#f9fcf9' # set #rgb code, leave empty for default
     linkColor = '' # Set color of links as #rrggbb code, leave empty for default
     backgroundColor = '#29281f' # Set color of background as #rrggbb code, leave empty for default
+
+    [[params.theme.footer.demoColumn]]
+    text = 'This is a placeholder for a content file of the footer. You can use Markdown or HTML here. Just place your content files into a folder "sections/footer" in your content directory, make the page bundle "headless" and enable the footer in the site config file.'
+
+    [[params.theme.footer.demoColumn]]
+    text = 'More footer content.'
+
+    [[params.theme.footer.demoColumn]]
+    text = 'To change this, please have a look at the README.md and the comments of the footer section in the config.toml file.'
+
+
 
 # Subfooter configuration
 
@@ -125,11 +138,12 @@ paginate = 2
 # See https://gohugo.io/content-management/page-bundles/#headless-bundle 
 # You can modify the style with a partial "subfooter_item.html", see example in "layouts/partials/".
 
-[params.theme.subfooter]
+[params.theme.subfooter] 
     enabled = true # Show the content below the footer
     fontColor = '' # Text color in subfooter. Leave empty to use the theme default. 
     linkColor = '' # Link color in subfooter. Leave empty to use the theme default. 
     backgroundColor = '' # Background color of subfooter. Leave empty to use the theme default. 
+    demoContent = 'Powered by <a href="https://gohugo.io">Hugo</a>. Theme <a href="https://github.com/geschke/hugo-tikva">Tikva</a> by <a href="https://www.kuerbis.org">Ralf Geschke</a>. As you can see, this text is only an example of the area below the footer. To change this, please have a look at the included example site and the section "Subfooter configuration" in the config.toml file. '
 
 # Font configuration
 
@@ -192,11 +206,21 @@ paginate = 2
 [params.sidebar]
     enabled = true # default false; set to true to enable sidebar
     style = 'right' # options: 'left', 'right'. Left means sidebar on the left side, right displays the sidebar on the right side
+ 
+  [[params.sidebar.demoColumn]]
+    title = 'About'
+    text = '<p class="mb-0">Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>'
+
+    [[params.sidebar.demoColumn]]
+    title = 'Example Content'
+    text = 'You can place everything you want in this area. Just add HTML or Markdown files into a folder named "sections/sidebar" in your content folder and declare the folder as "headless". This is an example of modifying the style with an individual "sidebar_item.html" partial. '
+
 
 
 # Menu section
 
 # This is an example of the main menu. You can also use the in-file setting in the header of the content files. 
+
 
 [menu]
 
@@ -221,9 +245,9 @@ paginate = 2
     weight = 30
 
     
+    
+[taxonomies]
+category = "categories"
+tag = "tags"
+series = "series"
   
-  [[menu.main]]
-    name = "Feedback"
-    url = "/feedback/"
-    weight = 40
-

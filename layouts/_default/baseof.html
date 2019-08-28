@@ -21,7 +21,7 @@
                     {{- block "main" . }}{{- end }}
                 </div>
                 {{- if and (default false .Site.Params.Sidebar.Enabled) (eq "right" (default "right" .Site.Params.Sidebar.Style)) }}
-                {{ partial "sidebar_container.html" . }}
+                    {{ partial "sidebar_container.html" . }}
                 {{- end -}}                
             </div>
         </div>

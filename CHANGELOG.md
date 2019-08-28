@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 0.2.5 - 2019-08-28
+
+### Changed
+
+- Fix due to https://github.com/gohugoio/hugoThemes/issues/682 (Demos with empty homepage and/or wrong posts list) - hopefully
+- Section content hints added to README.md
+
+### Added
+
+- Example content in sidebar, footer and subfooter will be shown as default when the section content folders are missing. The example content comes from the config.toml file, so just delete these lines or deactivate the section concerned.
+
+
 ## 0.2.4 - 2019-07-26
 
 ### Changed

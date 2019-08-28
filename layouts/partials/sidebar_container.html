@@ -1,11 +1,21 @@
 <aside class="col-md-3 tikva-sidebar">
   
-
 {{ $sidebarItems := .Site.GetPage "/sections/sidebar" }}
 {{ if $sidebarItems }}
     {{ range sort $sidebarItems.Resources "Name" }}
 
         {{ partial "sidebar_item.html" . }}
+
+    {{ end }}
+{{ else if .Site.Params.Sidebar.demoColumn }}    
+
+    {{ range .Site.Params.Sidebar.demoColumn }}
+        <div class="col">
+            <div class="p-3 mb-3 bg-light rounded">
+                <h4>{{ .title }}</h4>
+                <p>{{ .text | safeHTML }}</p>
+            </div>
+        </div>
     {{ end }}
 {{ end }}
 </aside><!-- /.tikva-sidebar -->
