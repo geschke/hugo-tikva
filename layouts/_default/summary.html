@@ -1,4 +1,4 @@
-{{ $dateFormat := default "Mon Jan 2, 2006" .Site.Params.DateFormat }}
+{{ $dateFormat := .Site.Params.DateFormat | default "Mon Jan 2, 2006"}}
 {{ $author :=  .Params.author | default .Site.Params.author }}
 
 <article class="mb-5 post">

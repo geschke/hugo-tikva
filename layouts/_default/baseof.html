@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{- default "" .Site.LanguageCode -}}">
+<html lang="{{- .Site.LanguageCode | default "" -}}">
 {{ partial "head.html" . }}
 
 <body>
@@ -14,13 +14,13 @@
         <div class="container">
             <div class="row">
 
-                {{- if and (default false .Site.Params.Sidebar.Enabled) (eq "left" (default "right" .Site.Params.Sidebar.Style)) }}
+                {{- if and (default false .Site.Params.Sidebar.Enabled) (eq "left" (.Site.Params.Sidebar.Style | default "right" )) }}
                 {{ partial "sidebar_container.html" . }}
                 {{- end -}}  
                 <div class="col-md" id="content">
                     {{- block "main" . }}{{- end }}
                 </div>
-                {{- if and (default false .Site.Params.Sidebar.Enabled) (eq "right" (default "right" .Site.Params.Sidebar.Style)) }}
+                {{- if and (default false .Site.Params.Sidebar.Enabled) (eq "right" (.Site.Params.Sidebar.Style | default "right" )) }}
                     {{ partial "sidebar_container.html" . }}
                 {{- end -}}                
             </div>

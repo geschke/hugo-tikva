@@ -48,7 +48,7 @@
 {{- $overlayBackgroundColor := printf " rgba(%d,%d,%d,%s)" $rr $gg $bb $overlayBackgroundTranspHex -}}
 
 <style>
-{{- $navbarStyle := default "fixed-top" .Site.Params.Navbar.Style -}}
+{{- $navbarStyle := .Site.Params.Navbar.Style | default "fixed-top" -}}
 
 body {
 
@@ -270,16 +270,16 @@ body {
     {{ if or .Site.Params.Theme.Header.OverlayDistanceVertical .Site.Params.Theme.Header.OverlayDistanceHorizontal }}
     <style type="text/css">
         #site-header-container-overlay {
-        {{ if (eq .Site.Params.Theme.Header.OverlayAlignment "lt") or (eq .Site.Params.Theme.Header.OverlayAlignment "lb") }}
+        {{ if or (eq .Site.Params.Theme.Header.OverlayAlignment "lt") (eq .Site.Params.Theme.Header.OverlayAlignment "lb") }}
             left: {{ .Site.Params.Theme.Header.OverlayDistanceHorizontal }}px;
-        {{ else if (eq .Site.Params.Theme.Header.OverlayAlignment "mt") or ( eq .Site.Params.Theme.Header.OverlayAlignment "mb") }}
+        {{ else if or (eq .Site.Params.Theme.Header.OverlayAlignment "mt") ( eq .Site.Params.Theme.Header.OverlayAlignment "mb") }}
             
-        {{ else if (eq .Site.Params.Theme.Header.OverlayAlignment "rt") or ( eq .Site.Params.Theme.Header.OverlayAlignment "rb") }}
+        {{ else if or (eq .Site.Params.Theme.Header.OverlayAlignment "rt") ( eq .Site.Params.Theme.Header.OverlayAlignment "rb") }}
             right: {{ .Site.Params.Theme.Header.OverlayDistanceHorizontal }}px;
         {{ end }}
-        {{ if (eq .Site.Params.Theme.Header.OverlayAlignment "lt") or (eq .Site.Params.Theme.Header.OverlayAlignment "mt") or (eq .Site.Params.Theme.Header.OverlayAlignment "rt") }}
+        {{ if or (eq .Site.Params.Theme.Header.OverlayAlignment "lt") (eq .Site.Params.Theme.Header.OverlayAlignment "mt") (eq .Site.Params.Theme.Header.OverlayAlignment "rt") }}
             top: {{ .Site.Params.Theme.Header.OverlayDistanceVertical }}px;
-        {{ else if ( eq .Site.Params.Theme.Header.OverlayAlignment "lb") or ( eq .Site.Params.Theme.Header.OverlayAlignment "mb") or ( eq .Site.Params.Theme.Header.OverlayAlignment "rb") }}
+        {{ else if or ( eq .Site.Params.Theme.Header.OverlayAlignment "lb") ( eq .Site.Params.Theme.Header.OverlayAlignment "mb")  ( eq .Site.Params.Theme.Header.OverlayAlignment "rb") }}
             bottom: {{ .Site.Params.Theme.Header.OverlayDistanceVertical }}px;
         {{ end }}
         }
@@ -289,8 +289,8 @@ body {
 {{ end }}
 {{ "<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->" | safeHTML }}
 {{ "<!--[if lt IE 9]>" | safeHTML }}
-        <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-        <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
 {{ "<![endif]-->" | safeHTML }}
 {{- partial "head_includes.html" . }}
 
