@@ -1,5 +1,6 @@
 {{ $dateFormat := .Site.Params.DateFormat | default "Mon Jan 2, 2006"}}
 {{ $author :=  .Params.author | default .Site.Params.author }}
+{{ $showNumberOfWords := .Params.showNumberOfWords | default .Site.Params.showNumberOfWords  }}
 
 <article class="mb-5 post">
   <header>
@@ -8,7 +9,7 @@
 
     <div class="post-meta">{{ if .Site.Params.ShowDate }}<span class="byline-icon fa fa-clock-o" aria-hidden="true"></span> <span class="screen-reader-text">{{ i18n "date" }}: </span><time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format $dateFormat }}</time> - {{ end }}{{ if $author }}
     <span class="byline-icon fa fa-user" aria-hidden="true"></span><span class="screen-reader-text">{{ i18n "author" }}: </span> {{ $author }} - {{ end }}
-    {{ .FuzzyWordCount }} {{ i18n "words" }} </div>
+    {{ if $showNumberOfWords }}{{ .FuzzyWordCount }} {{ i18n "words" }}{{ end }} </div>
   </header>
   {{ .Summary }}
 
