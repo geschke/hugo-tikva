@@ -86,8 +86,9 @@ paginate = 2
 
     image = 'img/header_bg_example.jpg' # Use header image. This option is only valid if the theme is configured to the "header" style. 
     
-    width = 2512 # Width of header image. Please set this value to the correct size, because it will be used for size calculation.
-    height = 673 # Height of header image. Please set this value to the correct size, because it will be used for size calculation.
+    # width and height settings are not used anymore
+    #width = 2512 # Width of header image. Please set this value to the correct size, because it will be used for size calculation.
+    #height = 673 # Height of header image. Please set this value to the correct size, because it will be used for size calculation.
     altText = 'alt text for header image' # Set alt text for header image, default empty
     displayHeaderText = true # display the title and subtitle - yes or no?
     titleOnImage = true # true|false, default false. Display title and subtitle as overlay in the foreground of the image. It is only possible to set the title as image overlay if an image is available. If no image is configured, the theme will do a fallback to non-overlay, i.e. title and subtitle will be displayed above the main navigation. 
@@ -99,6 +100,8 @@ paginate = 2
     overlayDistanceBetween = '0' # Distance between title and subtitle 
     overlayBackgroundColor = '#000000'
     overlayTransparency = '0' # default 70%, allowed values from 0 - 100 (without % sign!). This option enables a transparent background of title and subtitle. This is useful if the "titleOnImage" option is true, so the title is placed as overlay above the image. If this option is set to 0 or an empty value, the transparency color setting will be disabled. 
+    moveTitle = false # If title is placed as overlay: Move title above the header image on small smartphone displays, default false
+
 
 # Footer configuration
 

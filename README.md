@@ -1,7 +1,7 @@
 # Tikva Theme for Hugo
 
 Tikva is a minimalistic Hugo theme, based on [Bootstrap v4](https://getbootstrap.com/) CSS framework.
-It is a port of the Tikva theme which I developed a while ago for Grav CMS and WordPress, but there are also some features added from the (currently unpublished) Azbalac Theme for WordPress.
+It is a port of the Tikva theme which I developed a while ago for Grav CMS and WordPress, but there are also some features added from the (still unpublished) Azbalac Theme for WordPress.
 Tikva integrates multiple Bootstrap styles from the Bootswatch project and adds some customized styles.
 It's also possible to edit some color options by config option.
 

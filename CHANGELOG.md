@@ -4,6 +4,38 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+
+## 0.3.0 - 2020-12-20
+
+### Changed
+
+- Header image handling backported from Azbalac WordPress theme, now the header image loads with picture element, removed JavaScript code to load header image
+- Cleanup of JavaScript code due to header image settings
+- width and height options in the section `[params.theme.header]` are not used anymore, you can just delete them
+
+### Added
+
+- New option to move title and subtitle above the header image (if it is placed on the header image) on small displays. Previously this was done automatically, now the behavior can be customized. See option `moveTitle` in the `[params.theme.header]` section in config.toml of `exampleSite` folder.
+
+## 0.2.8 - 2020-06-10
+
+### Changed
+
+- Fix: https://github.com/geschke/hugo-tikva/issues/6 (Switch to UMD version of popper.js)
+
+## 0.2.7 - 2020-05-31
+
+### Changed
+
+- Fix: https://github.com/gohugoio/hugoThemes/issues/858 (Broken Themes on the Hugo Showcase)
+
+## 0.2.6 - 2020-02-20
+
+### Changed
+
+- Bootswatch and modified themes update
+- jQuery, Bootstrap, popper.js update
+
 ## 0.2.5 - 2019-08-28
 
 ### Changed
@@ -14,7 +46,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Added
 
 - Example content in sidebar, footer and subfooter will be shown as default when the section content folders are missing. The example content comes from the config.toml file, so just delete these lines or deactivate the section concerned.
-
 
 ## 0.2.4 - 2019-07-26
 

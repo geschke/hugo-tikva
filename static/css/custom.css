@@ -58,8 +58,7 @@
 
 /* default: hidden, will be shown by JavaScript */
 #site-header-above {
-  display: none;
-  position: relative;
+   position: relative;
 }
 
 #site-header-above img {

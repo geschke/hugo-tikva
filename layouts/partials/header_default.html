@@ -53,7 +53,15 @@
             
 
             <div id="site-header-above">
-                {{- if .Site.Params.Theme.Header.Image -}}<a href="{{ .Site.BaseURL }}" rel="home"><img id="site-header-image" src="{{ .Site.BaseURL }}{{ .Site.Params.Theme.Header.Image }}" width="1" height="1" data-width="{{ .Site.Params.Theme.Header.Width }}" data-height="{{ .Site.Params.Theme.Header.Height }}" alt="{{ .Site.Params.Theme.Header.AltText }}">
+                {{- if .Site.Params.Theme.Header.Image -}}<a href="{{ .Site.BaseURL }}" rel="home">
+                <picture>
+                        <source media="(min-width: 1200px)" srcset="{{ .Site.BaseURL }}{{ .Site.Params.Theme.Header.Image }} 1110w">
+                        <source media="(min-width: 992px) and (max-width: 1199.98px)" srcset="{{ .Site.BaseURL }}{{ .Site.Params.Theme.Header.Image }} 930w">
+                        <source media="(min-width: 768px) and (max-width: 991.98px)" srcset="{{ .Site.BaseURL }}{{ .Site.Params.Theme.Header.Image }} 690w">
+                        <source media="(min-width: 576px) and (max-width: 767.98px)" srcset="{{ .Site.BaseURL }}{{ .Site.Params.Theme.Header.Image }} 510w">
+                        <source media="(max-width: 575.98px)" srcset="{{ .Site.BaseURL }}{{ .Site.Params.Theme.Header.Image }} 476w">
+                        <img id="site-header-image" src="{{ .Site.BaseURL }}{{ .Site.Params.Theme.Header.Image }}" style="max-width: 100%; width: 100%">
+                </picture>
                 </a>{{- end -}}
 
                 {{ if and .Site.Params.Theme.Header.TitleOnImage .Site.Params.Theme.Header.DisplayHeaderText }}
