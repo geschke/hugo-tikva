@@ -79,7 +79,7 @@
              
             </div>
 
-
+    {{ if .Site.Menus.main }}
     <nav id="navbarMain" class="navbar navbar-expand-sm justify-content-between mb-3 {{ .Site.Params.Navbar.ColorScheme }} {{ .Site.Params.Navbar.BgScheme }}" {{ if .Site.Params.Navbar.BackgroundColor }}style="background-color: {{ .Site.Params.Navbar.BackgroundColor }};" {{ end }}role="navigation">
         
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -96,6 +96,7 @@
         
             
     </nav> <!-- end navbar-->
+    {{ end }}
 
 
 
