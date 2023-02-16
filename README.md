@@ -124,6 +124,7 @@ If you find a bug or have an idea for a feature, feel free to use the [issue tra
 
 ## Thanks to / Used third-party components
 
-* The [Bootstrap](https://getbootstrap.com) project, which is licensed under the [MIT license]
-* Thomas Park and the contributors of the [Bootswatch](https://bootswatch.com/) project.
+* The [Bootstrap](https://getbootstrap.com) project, which is licensed under the MIT license
+* Thomas Park and the contributors of the [Bootswatch](https://bootswatch.com/) project
 * [Font Awesome](https://fontawesome.com/v4.7.0/)
+* Image render hook from [hugo-theme-bootstrap](https://github.com/razonyang/hugo-theme-bootstrap) by Razon Yang

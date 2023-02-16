@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## 0.4.0 - 2023-02-16
+
+### Changed / New
+
+- Include image render hook from [hugo-theme-bootstrap](https://github.com/razonyang/hugo-theme-bootstrap) by Razon Yang. This fixes https://github.com/geschke/hugo-tikva/issues/10 in a backward compatible way. The new behavior can be enabled by the new config option `extendedRendering` in the `[params.images]` section. Please note the comments in the config.toml file of the `exampleSite` folder.
+
+## 0.3.2 - 2022-07-01
+
+### Changed
+
+- Move to Google Analytics v4 (gtag.js) internal template
+
 ## 0.3.1 - 2020-12-20
 
 ### Changed

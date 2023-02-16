@@ -219,6 +219,23 @@ paginate = 2
     text = 'You can place everything you want in this area. Just add HTML or Markdown files into a folder named "sections/sidebar" in your content folder and declare the folder as "headless". This is an example of modifying the style with an individual "sidebar_item.html" partial. '
 
 
+# Image processing configuration
+
+# With this option you can use the image processing options from hugo-theme-bootstrap (https://github.com/razonyang/hugo-theme-bootstrap).
+# Please see the documentation at https://hbs.razonyang.com/v1/en/docs/image-processing/ .
+#
+# If no parameter is added to the image in the Markdown code, the default behavior changes the width of the image so that it scales with the parent element.
+
+[params.images]
+    extendedRendering = false # backward compatible default setting is "false"; set to true to activate extended image rendering functions
+
+# Post options
+
+[params.post]
+  imageTitleAsCaption = false # default false; set to true to use image title as caption.
+                              # Markdown example: ![Image Caption](/image.jpg "This is my image title as caption")
+
+
 
 # Menu section
 

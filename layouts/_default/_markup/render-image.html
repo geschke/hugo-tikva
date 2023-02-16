@@ -1,0 +1,19 @@
+
+{{- if (default false .Page.Site.Params.Images.extendedRendering) }}
+
+{{/*
+  Partial comes from hugo-theme-bootstrap (https://github.com/razonyang/hugo-theme-bootstrap) by Razon Yang
+*/}}
+{{ partial "helpers/image" (dict
+  "filename" .Destination
+  "alt" .Text
+  "title" .Title
+  "class" "img-fluid"
+  "resources" .Page.Resources
+  "page" .Page)
+}}
+ 
+
+{{- else }}
+<img src="{{ .Destination | safeURL }}" alt="{{ .Text }}" {{ with .Title}} title="{{ . }}"{{ end }} />
+{{- end }}
